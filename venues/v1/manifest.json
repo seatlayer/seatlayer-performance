@@ -1,0 +1,39 @@
+{
+  "schema": "seatlayer.synthetic-venue-manifest.v1",
+  "releasedAt": "2026-09-14",
+  "provenance": "Original synthetic SeatLayer evaluation layouts; no customer or real-venue source data.",
+  "authoredAt": "2026-09-14",
+  "chartSchemaVersion": 1,
+  "fixtures": [
+    {
+      "id": "century-stadium",
+      "name": "Century Stadium",
+      "version": "1.0.0",
+      "file": "century-stadium.json",
+      "sha256": "4ce4333febdec467bfa5b3014867f6fdd91462f2f146c4abc6f9c637f492f871",
+      "bytes": 1122482,
+      "seats": 100000,
+      "sections": 200,
+      "rows": 4800,
+      "zones": 8,
+      "objects": 5007
+    },
+    {
+      "id": "century-arena",
+      "name": "Century Arena",
+      "version": "1.0.0",
+      "file": "century-arena.json",
+      "sha256": "29fb737d8adb1ae4195495cfba1b563506052abe4f1d9eb750b366f968d97c7d",
+      "bytes": 1107539,
+      "seats": 100000,
+      "sections": 200,
+      "rows": 4800,
+      "zones": 8,
+      "objects": 5004
+    }
+  ],
+  "limitations": [
+    "Synthetic evaluation fixtures, not reconstructions of real venues.",
+    "Do not use for physical capacity, dimensions, sightlines, accessibility routes, egress, safety, or regulatory compliance."
+  ]
+}
