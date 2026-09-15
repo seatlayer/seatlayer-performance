@@ -1,7 +1,6 @@
 # Event-scoped inventory architecture
 
-This vendor-neutral view describes SeatLayer's public event boundary without
-exposing infrastructure implementation details.
+Each event has its own live inventory state and ordered stream of changes.
 
 One published venue version can be reused by many events. Each event pins its
 venue snapshot and maintains its own live free, held, booked, blocked, hidden,

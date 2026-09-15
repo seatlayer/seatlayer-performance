@@ -1,52 +1,34 @@
 # SeatLayer Performance
 
-Reproducible performance evidence for SeatLayer buyer experiences at large
-venues. The fixtures, method and results are public so teams can inspect the
-work behind the numbers.
+Interactive seating charts benchmarked at **200,000 seats** — with a **1.95-second chart-ready time**, **58 FPS zoom**, and **60 FPS pan** in our desktop benchmark.
 
-The evidence covers three parts of a large-venue experience:
+![SeatLayer benchmark results for 100K, 150K and 200K seats](results/2026-09-15/scale-results.svg)
 
-1. How is an exact 100,000-seat fixture identified and reproduced?
-2. How quickly does the buyer renderer become usable?
-3. How smoothly do zoom, pan, section entry, selection, and live seat updates
-   behave after readiness?
+## Stadium scale, measured
 
-The evaluation uses original synthetic stadium and arena layouts, keeping the
-fixtures repeatable and free of customer data.
+| Seats | Chart ready | Zoom in/out | Pan |
+| ---: | ---: | ---: | ---: |
+| 100,000 | 1.02 s | 58.6 FPS | 60.0 FPS |
+| 150,000 | 1.44 s | 58.6 FPS | 60.0 FPS |
+| 200,000 | 1.95 s | 57.6 FPS | 60.0 FPS |
 
-## Large-venue evidence
+Results are medians of three runs per chart on a local production build, Chrome 152, 1280 × 720, DPR 2. Chart ready means the section overview is usable; seat graphics load as buyers explore. [Read the benchmark and methodology](results/2026-09-15/stadium-scale-benchmark.md) · [Inspect all nine runs](results/2026-09-15/runs/)
 
-| Evidence | Result |
-| --- | --- |
-| 100,000-seat stadium and arena | Five desktop production-build runs per fixture recorded 1,222.5 ms and 1,184.7 ms median picker readiness. Seat-detail zoom mean FPS had a 58.07 minimum across all runs. [See the full result](results/2026-09-14/century-100k-browser-benchmark.md). |
-| 53,018-seat public demo benchmark | A dated desktop run is documented at [SeatLayer renderer performance](https://docs.seatlayer.io/platform/renderer-performance/). |
-| Event-scoped inventory | The [event-isolation architecture](architecture/event-isolation.md) shows how each event owns its live inventory, ordering and session stream. |
+## Explore the venues
 
-## Repository layout
+- [Try the 53,018-seat stadium demo](https://app.seatlayer.io/demo/play/large-stadium).
+- Download the [100K stadium](venues/v1/century-stadium.json), [100K arena](venues/v1/century-arena.json), [150K stadium](venues/v1/century-stadium-150k.json), or [200K stadium](venues/v1/century-stadium-200k.json).
+- Each stadium benchmark contains **200 sections**. [Fixture sizes, inventory counts and SHA-256 hashes](venues/v1/manifest.json) identify the exact charts tested.
 
-- [`venues/`](venues/) — provenance and release notes for synthetic test venues.
-- [`benchmarks/browser/`](benchmarks/browser/) — public-SDK browser benchmark
-  method.
-- [`results/`](results/) — result schema, measurement rules and measured
-  summaries.
-- [`architecture/event-isolation.md`](architecture/event-isolation.md) — the
-  public, vendor-neutral event-state model.
+These original synthetic venues provide repeatable, customer-data-free fixtures for evaluating large seating charts.
 
-## How measurements are recorded
+## More evidence
 
-- Fixture versions and SHA-256 hashes identify the exact chart under test.
-- Each run records the application build, SDK version, browser, operating
-  system, hardware, viewport, device-pixel ratio and test time.
-- Readiness and complete-seat materialization are separate milestones.
-- Frame intervals include p50, p95 and maximum values alongside mean FPS.
-- Local production-build and deployed-production results remain distinct.
-
-SeatLayer documentation, website evidence, `llms.txt` files and the public
-knowledge MCP link to the matching versioned result so human and machine readers
-receive the same measurements.
+- [100K stadium and arena benchmark — 14 September 2026](results/2026-09-14/century-100k-browser-benchmark.md)
+- [Event isolation architecture](architecture/event-isolation.md) — how events own their inventory and session streams
+- [Renderer performance documentation](https://docs.seatlayer.io/platform/renderer-performance/)
+- [Browser measurement method](benchmarks/browser/README.md)
 
 ## License
 
-The original benchmark method and synthetic fixture files are available under
-the [MIT License](LICENSE). The separately distributed proprietary SeatLayer SDK
-is not included under that license; see [NOTICE.md](NOTICE.md).
+Benchmark materials and synthetic venue fixtures are available under the [MIT License](LICENSE). The separately distributed SeatLayer SDK has its own license; see [NOTICE.md](NOTICE.md).

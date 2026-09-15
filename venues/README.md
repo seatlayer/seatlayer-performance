@@ -1,18 +1,14 @@
 # Synthetic venue fixtures
 
-The [`v1`](v1/) fixtures are original synthetic stadium and arena layouts
-created for repeatable performance evaluation. Their manifest records:
+Original stadium and arena layouts for repeatable SeatLayer performance testing.
 
-- a stable name and semantic version;
-- its seat, section, row, floor, zone, and object counts;
-- a SHA-256 content hash;
-- the generator or export provenance and the SeatLayer chart schema version;
-- validation and export/import round-trip results;
-- a statement that it is conceptual and does not reproduce a customer venue;
-- a statement that it does not certify physical capacity, measurements,
-  sightlines, accessibility routes, egress, or regulatory compliance.
+| Venue | Seats | Sections | Download |
+| --- | ---: | ---: | --- |
+| Century Stadium | 100,000 | 200 | [Chart JSON](v1/century-stadium.json) |
+| Century Arena | 100,000 | 200 | [Chart JSON](v1/century-arena.json) |
+| Century Stadium 150 | 150,000 | 200 | [Chart JSON](v1/century-stadium-150k.json) |
+| Century Stadium 200 | 200,000 | 200 | [Chart JSON](v1/century-stadium-200k.json) |
 
-Both fixtures contain exactly 100,000 seats as compact authored rows. They are
-conceptual evaluation layouts, contain no customer or real-venue source data,
-and do not certify physical capacity, measurements, sightlines, accessibility
-routes, egress, safety, or regulatory compliance.
+The [manifest](v1/manifest.json) records exact file sizes, inventory counts and SHA-256 hashes. Charts use compact authored rows and preserve stable seat identities through JSON export/import.
+
+These are original synthetic layouts, with no customer or real-venue source data. They are performance fixtures rather than venue construction or safety plans.

@@ -30,6 +30,34 @@
       "rows": 4800,
       "zones": 8,
       "objects": 5004
+    },
+    {
+      "id": "century-stadium-150k",
+      "name": "Century Stadium 150",
+      "version": "1.0.0",
+      "releasedAt": "2026-09-15",
+      "file": "century-stadium-150k.json",
+      "sha256": "bb5872697380e548ac6bc8474782d9acd94e2090e384dea90f6e7e1212c326c8",
+      "bytes": 1385261,
+      "seats": 150000,
+      "sections": 200,
+      "rows": 6000,
+      "zones": 8,
+      "objects": 6207
+    },
+    {
+      "id": "century-stadium-200k",
+      "name": "Century Stadium 200",
+      "version": "1.0.0",
+      "releasedAt": "2026-09-15",
+      "file": "century-stadium-200k.json",
+      "sha256": "fad6fae07dad4cd35eff2cb631883e9f56c4a0f6501be55469ba43266c7026b4",
+      "bytes": 1648881,
+      "seats": 200000,
+      "sections": 200,
+      "rows": 7200,
+      "zones": 8,
+      "objects": 7407
     }
   ],
   "limitations": [

@@ -1,81 +1,37 @@
-# Browser renderer benchmark
+# Browser performance measurement
 
-This benchmark treats SeatLayer as a public SDK consumer would. It uses only:
+The [stadium scale benchmark](../../results/2026-09-15/stadium-scale-benchmark.md) measures SeatLayer's complete buyer picker using original, versioned chart fixtures and local seeded availability.
 
-- the released `SeatPicker` constructor and documented methods;
-- the public `onAnalytics` callback for renderer milestones; and
-- browser `requestAnimationFrame` timestamps around scripted user interactions.
+## Chart readiness
 
-It must not inspect renderer internals, private scene nodes, hidden diagnostic
-objects, or product source code. That keeps the public method reproducible by an
-integrator using the published package.
+The fixture is fetched, SHA-256 verified and parsed before picker rendering begins. Those steps are recorded separately. The picker emits `chart_rendered` when its section overview is usable. In viewport mode, individual seat graphics materialize as the buyer explores.
 
-## Setup
+The measured renderer build and browser environment are recorded with every result. Source-build results identify the renderer revision; published-SDK results identify the package version.
 
-Before running the example:
+## Interaction sequence
 
-1. Select an actually published stable `@seatlayer/js` release.
-2. Record the exact version and immutable package source used by the page.
-3. Verify `SeatPicker`, `onAnalytics`, the interaction methods, and emitted
-   milestone names against that release's public documentation.
-4. Use a public synthetic event or a local demo transport that contains no
-   credentials, customer data, or private identifiers.
-5. Run a production bundle in a foreground browser tab.
+Every run starts from a fresh page load and records these seven actions:
 
-## Public API boundary
+1. Enter section 101 and allow 1,200 ms to settle.
+2. Zoom in six times and out six times, 120 ms between steps, followed by 400 ms settling.
+3. Pan at seat detail: 12 steps out and 12 back across 220 × 140 CSS pixels, with 16 ms between steps and 200 ms settling.
+4. Enter section 121 and settle for 1,200 ms.
+5. Return to section 101 and settle for 1,200 ms.
+6. Select and deselect 32 seats sequentially, 25 ms between changes, then settle for 200 ms.
+7. Apply a local held/booked status batch and settle for 400 ms.
 
-The page uses the released UMD build's public `SeatPicker` constructor with a
-fresh local `PickerTransport`, `loadingReveal: 'viewport'`, `onAnalytics`, and
-the controls visible inside the picker. It does not read a controller, renderer,
-scene graph, private property, or diagnostic global.
+A frame sampler starts before each action, includes the first synchronous delay and continues through the settling period. Two additional animation frames complete each sample. The raw records contain every interval. The tab remains visible throughout; background samples are flagged.
 
-The transport reports every object as free and exposes no socket. Hold and Best
-Available calls reject with a read-only benchmark error; the page is not a
-booking-system simulation. The released package determines which milestone
-properties are available. The harness records the callback payload and states
-its timer boundary; viewport mode has no all-seats-materialized milestone.
+## Calculations
 
-## Frame sampling
+- Mean FPS per action: `1000 / mean(frame intervals in milliseconds)`.
+- Readiness summary: minimum, median and maximum across complete runs.
+- Interaction summary: minimum and median of the individual runs' mean FPS.
+- Frame percentiles: nearest rank within each run.
+- Slow-frame count: intervals greater than 33.4 ms.
 
-Start the animation-frame sampler before invoking each interaction so the first
-synchronous delay is included:
+Every measured repetition is retained, including slower runs. The benchmark measures browser rendering; status propagation across a network and simultaneous-viewer traffic use separate workloads.
 
-```js
-async function sampleFrames(action, settleMs) {
-  const frames = [];
-  let previous = performance.now();
-  let running = true;
+## Fixtures and records
 
-  function sample(now) {
-    frames.push(now - previous);
-    previous = now;
-    if (running) requestAnimationFrame(sample);
-  }
-
-  requestAnimationFrame(sample);
-  action();
-  await new Promise((resolve) => setTimeout(resolve, settleMs));
-  running = false;
-  return frames;
-}
-```
-
-The implementation must stop sampling deterministically and discard the
-initial scheduling interval only when the written method justifies it. Raw
-frame intervals remain in the run artifact. Summaries report sample count,
-p50, p95, maximum, and frames above the declared budget.
-
-## Manual interaction sequence
-
-The page records 30 seconds while the person uses the visible picker to zoom and
-pan. Each raw run records that the action sequence was manual.
-
-## Repetition and output
-
-- Run at least one warm-up that is labelled and excluded from the reported
-  distribution.
-- Preserve every measured repetition, including slow, failed, and aborted runs.
-- Record desktop and narrow viewports separately.
-- Keep local production-build and deployed-production results in separate
-  summaries.
-- Write each run against [`results/run-manifest.schema.json`](../../results/run-manifest.schema.json).
+[Download the venues](../../venues/) · [Inspect raw runs](../../results/2026-09-15/runs/) · [Read the measured results](../../results/2026-09-15/stadium-scale-benchmark.md)
