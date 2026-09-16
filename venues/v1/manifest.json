@@ -29,7 +29,13 @@
       "sections": 200,
       "rows": 4800,
       "zones": 8,
-      "objects": 5004
+      "objects": 5004,
+      "supersededBy": {
+        "version": "2.0.0",
+        "file": "../v1.1/century-arena.json",
+        "sha256": "c6c881670445b1bf78e6f52ed1bd8a3fd395e3e1b2aba8a93da808a29a7b7445",
+        "note": "Caption-only revision. This 1.0.0 entry stays as published: it is the chart the 14 September 2026 arena benchmark measured."
+      }
     },
     {
       "id": "century-stadium-150k",

@@ -3,7 +3,7 @@
 | Benchmark | Charts | Measurements |
 | --- | --- | --- |
 | [15 September 2026](2026-09-15/stadium-scale-benchmark.md) | 100K, 150K and 200K stadiums | Three runs per chart, readiness, seven interaction probes, [all nine raw records](2026-09-15/runs/) |
-| [14 September 2026](2026-09-14/century-100k-browser-benchmark.md) | 100K stadium and arena | Five runs per chart, readiness and interaction frames |
+| [14 September 2026](2026-09-14/century-100k-browser-benchmark.md) | 100K stadium and arena | Five runs per chart, readiness and interaction frames. Arena figures belong to fixture 1.0.0; a re-run on arena 2.0.0 is pending |
 
 ## Reading a result
 

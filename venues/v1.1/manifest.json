@@ -1,0 +1,34 @@
+{
+  "schema": "seatlayer.synthetic-venue-manifest.v1",
+  "releasedAt": "2026-09-16",
+  "provenance": "Original synthetic SeatLayer evaluation layouts; no customer or real-venue source data.",
+  "authoredAt": "2026-09-16",
+  "chartSchemaVersion": 1,
+  "fixtures": [
+    {
+      "id": "century-arena",
+      "name": "Century Arena",
+      "version": "2.0.0",
+      "releasedAt": "2026-09-16",
+      "file": "century-arena.json",
+      "sha256": "c6c881670445b1bf78e6f52ed1bd8a3fd395e3e1b2aba8a93da808a29a7b7445",
+      "bytes": 1107706,
+      "seats": 100000,
+      "sections": 200,
+      "rows": 4800,
+      "zones": 8,
+      "objects": 5005,
+      "supersedes": {
+        "version": "1.0.0",
+        "file": "../v1/century-arena.json",
+        "sha256": "29fb737d8adb1ae4195495cfba1b563506052abe4f1d9eb750b366f968d97c7d",
+        "bytes": 1107539,
+        "note": "Version 1.0.0 remains published unchanged and is the chart the 14 September 2026 arena benchmark measured. Version 2.0.0 changes captions only: the event-floor caption moved out of the centre onto a floor panel west of the stage, and the centre-stage caption ink was darkened. Seats, sections, rows and zones are identical."
+      }
+    }
+  ],
+  "limitations": [
+    "Synthetic evaluation fixtures, not reconstructions of real venues.",
+    "Do not use for physical capacity, dimensions, sightlines, accessibility routes, egress, safety, or regulatory compliance."
+  ]
+}
