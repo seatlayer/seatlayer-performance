@@ -1,6 +1,6 @@
 # SeatLayer Performance
 
-Interactive seating charts benchmarked at **200,000 seats** — with a **1.95-second chart-ready time**, **58 FPS zoom**, and **60 FPS pan** in our desktop benchmark.
+Interactive seating charts benchmarked at **200,000 seats**, with a **1.95-second chart-ready time**, **58 FPS zoom**, and **60 FPS pan** in our desktop benchmark.
 
 ![SeatLayer benchmark results for 100K, 150K and 200K seats](results/2026-09-15/scale-results.svg)
 
@@ -16,10 +16,10 @@ Results are medians of three runs per chart on a local production build, Chrome 
 
 ## Explore the venues
 
-- [Try the 100,000-seat Century Stadium live](https://app.seatlayer.io/demo/play/century-stadium-100k) — the same fixture as `century-stadium.json`, published to the public demo catalog on 16 September 2026.
-- [Try the 100,000-seat Century Arena live](https://app.seatlayer.io/demo/play/century-arena-100k) — the same fixture as `venues/v1.1/century-arena.json` (Century Arena 2.0.0), published to the public demo catalog on 16 September 2026.
-- [Try the 150,000-seat Century Stadium live](https://app.seatlayer.io/demo/play/century-stadium-150k) — the same fixture as `century-stadium-150k.json`, published to the public demo catalog on 16 September 2026.
-- [Try the 200,000-seat Century Stadium live](https://app.seatlayer.io/demo/play/century-stadium-200k) — the same fixture as `century-stadium-200k.json`, published to the public demo catalog on 16 September 2026.
+- [Try the 100,000-seat Century Stadium live](https://app.seatlayer.io/demo/play/century-stadium-100k): the same fixture as `century-stadium.json`, published to the public demo catalog on 16 September 2026.
+- [Try the 100,000-seat Century Arena live](https://app.seatlayer.io/demo/play/century-arena-100k): the same fixture as `venues/v1.1/century-arena.json` (Century Arena 2.0.0), published to the public demo catalog on 16 September 2026.
+- [Try the 150,000-seat Century Stadium live](https://app.seatlayer.io/demo/play/century-stadium-150k): the same fixture as `century-stadium-150k.json`, published to the public demo catalog on 16 September 2026.
+- [Try the 200,000-seat Century Stadium live](https://app.seatlayer.io/demo/play/century-stadium-200k): the same fixture as `century-stadium-200k.json`, published to the public demo catalog on 16 September 2026.
 - [Try the 53,018-seat stadium demo](https://app.seatlayer.io/demo/play/large-stadium).
 - Download the [100K stadium](venues/v1/century-stadium.json), [100K arena](venues/v1.1/century-arena.json), [150K stadium](venues/v1/century-stadium-150k.json), or [200K stadium](venues/v1/century-stadium-200k.json).
 - Each stadium benchmark contains **200 sections**. [Fixture sizes, inventory counts and SHA-256 hashes](venues/v1/manifest.json) identify the exact charts tested.
@@ -29,8 +29,8 @@ These original synthetic venues provide repeatable, customer-data-free fixtures 
 
 ## More evidence
 
-- [100K stadium and arena benchmark — 14 September 2026](results/2026-09-14/century-100k-browser-benchmark.md)
-- [Event isolation architecture](architecture/event-isolation.md) — how events own their inventory and session streams
+- [100K stadium and arena benchmark, 14 September 2026](results/2026-09-14/century-100k-browser-benchmark.md)
+- [Event isolation architecture](architecture/event-isolation.md): how events own their inventory and session streams
 - [Renderer performance documentation](https://docs.seatlayer.io/platform/renderer-performance/)
 - [Browser measurement method](benchmarks/browser/README.md)
 
