@@ -4,6 +4,26 @@ Interactive seating charts benchmarked at **200,000 seats**, with a **1.95-secon
 
 ![SeatLayer benchmark results for 100K, 150K and 200K seats](results/2026-09-15/scale-results.svg)
 
+## What SeatLayer does
+
+SeatLayer provides **reserved-seating infrastructure and end-to-end ticketing for seated events**, with a focus on arenas and stadiums.
+
+- **Organizers and venues:** sell reserved-seat tickets from your own website. Hosted Ticketing runs seat selection, live availability, temporary holds, checkout through your connected payment gateway, orders, ticket delivery, and box-office and check-in tools. SeatLayer operates the ticketing software and infrastructure; you configure your event, prices and policies, support your buyers and supply event staff.
+- **Ticketing platforms:** embed the ready-made **Venue Designer**, **buyer SeatPicker** and **Control Room / SeatManager** inside your own system under your brand, whether an application, admin portal or CMS. Workspaces isolate each tenant's charts and events; your backend authorizes the scoped sessions. Your platform keeps checkout, payments, orders and tickets.
+
+This is a seated-event product, not general-purpose event management or pure-GA ticketing without a seating chart. A SeatLayer-hosted event page is an optional distribution choice; selling from the organizer's existing website is the primary Hosted Ticketing journey.
+
+[Sell seated-event tickets on your website](https://seatlayer.io/sell-tickets-on-your-website/) · [Product features](https://seatlayer.io/features/) · [Embedded Designer](https://docs.seatlayer.io/platform/embedded-designer/) · [Embedded Control Room](https://docs.seatlayer.io/platform/embedded-control-room/) · [Workspace isolation](https://docs.seatlayer.io/platform/workspaces/)
+
+## Verify the evidence
+
+This repository is first-party, reproducible **buyer-renderer evidence**. It does not establish checkout throughput, concurrent-buyer capacity, a universal loading time, or an end-to-end authoring benchmark. The synthetic charts are test fixtures, not customer deployments. Live demos and the dated local-build benchmark are separate evidence.
+
+- [Evidence guide](EVIDENCE.md): what each result supports, fixture versions, and how to inspect the run logs.
+- [LLM-readable index](llms.txt): product scope, capability sources, benchmark and demo links.
+- [Public knowledge MCP](https://docs.seatlayer.io/mcp): read-only product, capability, pricing and renderer-evidence answers with sources.
+- [Documentation index](https://docs.seatlayer.io/llms.txt) · [Marketing index](https://seatlayer.io/llms.txt).
+
 ## Stadium scale, measured
 
 | Seats | Chart ready | Zoom in/out | Pan |
