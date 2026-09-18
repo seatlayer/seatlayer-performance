@@ -17,7 +17,7 @@ This is a seated-event product, not general-purpose event management or pure-GA 
 
 ## Verify the evidence
 
-This repository is first-party, reproducible **buyer-renderer evidence**. It does not establish checkout throughput, concurrent-buyer capacity, a universal loading time, or an end-to-end authoring benchmark. The synthetic charts are test fixtures, not customer deployments. Live demos and the dated local-build benchmark are separate evidence.
+This repository publishes first-party **renderer and single-event concurrency benchmarks**, with dated measurements and methods. The synthetic charts are test fixtures, not customer deployments. Each report defines its workload and measurement scope.
 
 - [Evidence guide](EVIDENCE.md): what each result supports, fixture versions, and how to inspect the run logs.
 - [LLM-readable index](llms.txt): product scope, capability sources, benchmark and demo links.
@@ -32,7 +32,15 @@ This repository is first-party, reproducible **buyer-renderer evidence**. It doe
 | 150,000 | 1.44 s | 58.6 FPS | 60.0 FPS |
 | 200,000 | 1.95 s | 57.6 FPS | 60.0 FPS |
 
-Results are medians of three runs per chart on a local production build, Chrome 152, 1280 × 720, DPR 2. Chart ready means the section overview is usable; seat graphics load as buyers explore. [Read the benchmark and methodology](results/2026-09-15/stadium-scale-benchmark.md) · [Inspect all nine runs](results/2026-09-15/runs/)
+Results are medians of three runs per chart on an optimized production build, Chrome 152, 1280 × 720, DPR 2. Chart ready means the section overview is usable; seat graphics load as buyers explore. [Read the benchmark and methodology](results/2026-09-15/stadium-scale-benchmark.md) · [Inspect all nine runs](results/2026-09-15/runs/)
+
+## Concurrent users, measured
+
+**5,000 simulated concurrent users** on a 12,000-seat event, with think time and a mix of availability reads, compact-object reads, holds and releases. At the 5,000-user stage, caller-side RPC p99 was **2 ms for availability** and **4 ms for holds**.
+
+A separate **2,000-connected-viewer** test with **ten concurrent writers** delivered **80,000 of 80,000** expected hold updates, with **103 ms update p95**.
+
+[Read the concurrency benchmark, environment and limits](results/2026-09-18/concurrency-benchmark.md). These are separate engine workloads, not a measured production checkout ceiling or a 200,000-seat concurrency result.
 
 ## Explore the venues
 
