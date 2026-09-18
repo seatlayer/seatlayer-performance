@@ -1,4 +1,4 @@
-# Stadium scale benchmark — 15 September 2026
+# Stadium scale benchmark, 15 September 2026
 
 SeatLayer's buyer picker rendered **100,000, 150,000 and 200,000 reserved seats**, each across 200 sections. Three complete runs were recorded for each stadium, covering section entry, zoom, pan, seat selection and status updates.
 

@@ -1,5 +1,5 @@
-// Local-only isolated-harness probe, 2026-09-18 run-15k series.
-// Same request mix and think time as drill.k6.js; slower ramp to 10,000 VUs.
+// Local-only isolated-harness probe, 2026-09-18.
+// Same request mix and think time as the earlier drill script; slower ramp to 10,000 VUs.
 // 120 s ramp, 120 s plateau at 10,000 VUs, 20 s ramp down; no sockets.
 import http from 'k6/http';
 import { check, sleep } from 'k6';
