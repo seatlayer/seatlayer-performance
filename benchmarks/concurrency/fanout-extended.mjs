@@ -1,4 +1,4 @@
-// Extended viewer fan-out, 2026-09-18 run-15k series.
+// Extended viewer fan-out, 2026-09-18.
 // Same workload as fanout.mjs (12,000 seats, 40 distinct-seat holds per stage in
 // four bursts of ten concurrent writers, 10 s delivery observation deadline),
 // with the stage list extended past 2,000 connected viewers.

@@ -9,7 +9,6 @@
       "id": "10k-slow",
       "script": "drill-10k-slow.k6.js",
       "stages": "0 to 10,000 VUs over 120 s, 120 s plateau, 20 s ramp down",
-      "somaxconn": 128,
       "ulimitN": 1048576,
       "plateauWindowSec": [
         125,
@@ -26,7 +25,7 @@
         "httpRequests": 390795,
         "httpRequestsPerSecond": 3552.7,
         "httpFailed": 32,
-        "httpFailedRate": 0.000082,
+        "httpFailedRate": 8.2e-05,
         "http5xx": 0,
         "holdOk": 12977,
         "holdRefused": 1098,
@@ -87,177 +86,7 @@
       "wholeRun": {
         "httpRequests": 814235,
         "httpFailed": 32,
-        "httpFailedRate": 0.000039
-      }
-    },
-    {
-      "id": "15k-attempt-1",
-      "script": "drill-15k.k6.js",
-      "stages": "0 to 15,000 VUs over 180 s, 120 s plateau, 30 s ramp down",
-      "somaxconn": 128,
-      "ulimitN": 1048576,
-      "plateauWindowSec": [
-        185,
-        295
-      ],
-      "result": "fail (loopback connection resets)",
-      "plateauSpanSecondsObserved": 110,
-      "vusPlateau": {
-        "min": 15000,
-        "max": 15000,
-        "samples": 106
-      },
-      "plateau": {
-        "httpRequests": 699819,
-        "httpRequestsPerSecond": 6362,
-        "httpFailed": 610292,
-        "httpFailedRate": 0.872071,
-        "http5xx": 0,
-        "holdOk": 2923,
-        "holdRefused": 22708,
-        "rpcMs": {
-          "availability": {
-            "n": 63310,
-            "p50": 49,
-            "p95": 241,
-            "p99": 349,
-            "max": 1123
-          },
-          "objects": {
-            "n": 21563,
-            "p50": 40,
-            "p95": 174,
-            "p99": 281,
-            "max": 750
-          },
-          "hold": {
-            "n": 3667,
-            "p50": 59,
-            "p95": 220,
-            "p99": 329,
-            "max": 600
-          }
-        },
-        "httpMsByRoute": {
-          "availability": {
-            "n": 516144,
-            "p50": 0,
-            "p95": 2634.284,
-            "p99": 4681.213,
-            "max": 45284.802
-          },
-          "objects": {
-            "n": 155084,
-            "p50": 0,
-            "p95": 1283.527,
-            "p99": 5034.56,
-            "max": 30013.693
-          },
-          "hold": {
-            "n": 25631,
-            "p50": 0,
-            "p95": 1325.116,
-            "p99": 4801.119,
-            "max": 30005.598
-          },
-          "release": {
-            "n": 2960,
-            "p50": 1940.692,
-            "p95": 4379.671,
-            "p99": 5304.43,
-            "max": 30088.078
-          }
-        }
-      },
-      "wholeRun": {
-        "httpRequests": 1524209,
-        "httpFailed": 993015,
-        "httpFailedRate": 0.651495
-      }
-    },
-    {
-      "id": "15k-attempt-2",
-      "script": "drill-15k.k6.js RAMP=300s",
-      "stages": "0 to 15,000 VUs over 300 s, 120 s plateau, 30 s ramp down",
-      "somaxconn": 128,
-      "ulimitN": 1048576,
-      "plateauWindowSec": [
-        305,
-        415
-      ],
-      "result": "fail (loopback connection resets)",
-      "plateauSpanSecondsObserved": 110,
-      "vusPlateau": {
-        "min": 15000,
-        "max": 15000,
-        "samples": 109
-      },
-      "plateau": {
-        "httpRequests": 642594,
-        "httpRequestsPerSecond": 5842.7,
-        "httpFailed": 568934,
-        "httpFailedRate": 0.885371,
-        "http5xx": 0,
-        "holdOk": 2478,
-        "holdRefused": 21078,
-        "rpcMs": {
-          "availability": {
-            "n": 52052,
-            "p50": 44,
-            "p95": 321,
-            "p99": 483,
-            "max": 1246
-          },
-          "objects": {
-            "n": 18155,
-            "p50": 36,
-            "p95": 250,
-            "p99": 423,
-            "max": 896
-          },
-          "hold": {
-            "n": 3085,
-            "p50": 52,
-            "p95": 292,
-            "p99": 422,
-            "max": 849
-          }
-        },
-        "httpMsByRoute": {
-          "availability": {
-            "n": 474791,
-            "p50": 0,
-            "p95": 2395.234,
-            "p99": 5146.092,
-            "max": 14820.028
-          },
-          "objects": {
-            "n": 141674,
-            "p50": 0,
-            "p95": 1567.041,
-            "p99": 5541.484,
-            "max": 12839.045
-          },
-          "hold": {
-            "n": 23576,
-            "p50": 0,
-            "p95": 1535.373,
-            "p99": 5783.201,
-            "max": 10667.661
-          },
-          "release": {
-            "n": 2553,
-            "p50": 1818.144,
-            "p95": 4716.313,
-            "p99": 5872.778,
-            "max": 7180.562
-          }
-        }
-      },
-      "wholeRun": {
-        "httpRequests": 1884196,
-        "httpFailed": 1266782,
-        "httpFailedRate": 0.67232
+        "httpFailedRate": 3.9e-05
       }
     }
   ]

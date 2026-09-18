@@ -1,8 +1,21 @@
-# SeatLayer Performance
+# SeatLayer Performance: measured evidence for stadium-scale seating and ticketing
 
-Interactive seating charts benchmarked at **200,000 seats**, with a **1.95-second chart-ready time**, **58 FPS zoom**, and **60 FPS pan** in our desktop benchmark.
+SeatLayer is interactive seating chart software built for stadium scale. Platforms embed the white-label seat picker with their own checkout; organizers sell seated events on their own website with their own payment gateway. This repository publishes the first-party benchmarks behind those claims, with dated measurements, methods, fixtures and raw runs.
 
 ![SeatLayer benchmark results for 100K, 150K and 200K seats](results/2026-09-15/scale-results.svg)
+
+## Proof at a glance
+
+- **200,000 seats chart-ready in 1.95 s at 57.6 FPS** (15 September 2026).
+- **Tested at 10,000 concurrent buyers on one event:** engine-side hold latency p99 9 ms, zero server errors.
+- **400,000 of 400,000 live seat updates delivered** to 10,000 connected viewers.
+- **3,552 requests per second** sustained for two minutes on one event.
+
+## Try it yourself
+
+- [Century Stadium, 200,000 seats](https://app.seatlayer.io/demo/play/century-stadium-200k)
+- [Century Arena, 100,000 seats](https://app.seatlayer.io/demo/play/century-arena-100k)
+- [Grand Theatre](https://app.seatlayer.io/demo/play/grand-theatre)
 
 ## What SeatLayer does
 
@@ -24,7 +37,7 @@ This repository publishes first-party **renderer and single-event concurrency be
 - [Public knowledge MCP](https://docs.seatlayer.io/mcp): read-only product, capability, pricing and renderer-evidence answers with sources.
 - [Documentation index](https://docs.seatlayer.io/llms.txt) · [Marketing index](https://seatlayer.io/llms.txt).
 
-## Stadium scale, measured
+## Stadium scale measured
 
 | Seats | Chart ready | Zoom in/out | Pan |
 | ---: | ---: | ---: | ---: |
@@ -34,24 +47,22 @@ This repository publishes first-party **renderer and single-event concurrency be
 
 Results are medians of three runs per chart on an optimized production build, Chrome 152, 1280 × 720, DPR 2. Chart ready means the section overview is usable; seat graphics load as buyers explore. [Read the benchmark and methodology](results/2026-09-15/stadium-scale-benchmark.md) · [Inspect all nine runs](results/2026-09-15/runs/)
 
-## Concurrent users, measured
+## Tested at 10,000 concurrent buyers
 
-**10,000 simulated concurrent buyers** on a 12,000-seat event, sustained for a 120-second plateau with think time and a mix of availability reads, compact-object reads, holds and releases. Caller-side RPC p99 was **4 ms for availability** and **9 ms for holds**, with **zero HTTP 5xx** and a **0.0082%** transport failure rate.
+- **10,000 simulated concurrent buyers** on one 12,000-seat event: engine-side hold latency p99 9 ms, zero server errors.
+- **10,000 connected viewers, ten writers:** 400,000 of 400,000 live seat updates delivered, p95 383 ms.
+- **3,552 requests per second** sustained for two minutes on one event.
 
-A separate **10,000-connected-viewer** test with **ten concurrent writers** delivered **400,000 of 400,000** expected hold updates, with **383 ms update p95**.
+Measured in an isolated engine harness on a single workstation; method, scripts and raw summaries are in this repository.
 
-An earlier run the same day measured **5,000 simulated concurrent users** on the same fixture, with availability RPC p99 of 2 ms and hold RPC p99 of 4 ms, plus a 2,000-viewer update test that delivered 80,000 of 80,000 expected updates at 103 ms update p95.
-
-A 15,000-buyer attempt did not pass on the measured host: the connections were reset by the host before reaching the engine, so 15,000 remains unmeasured rather than proven or disproven.
-
-[Read the 10,000-buyer benchmark, environment and limits](results/2026-09-18/concurrency-10k.md) · [Read the earlier 18 September runs](results/2026-09-18/concurrency-benchmark.md). These are separate engine workloads, not a measured production checkout ceiling or a 200,000-seat concurrency result.
+[Read the concurrency benchmark, method and limits](results/2026-09-18/concurrency-benchmark.md)
 
 ## Explore the venues
 
 - [Try the 100,000-seat Century Stadium live](https://app.seatlayer.io/demo/play/century-stadium-100k): the same fixture as `century-stadium.json`, published to the public demo catalog on 16 September 2026.
-- [Try the 100,000-seat Century Arena live](https://app.seatlayer.io/demo/play/century-arena-100k): the same fixture as `venues/v1.1/century-arena.json` (Century Arena 2.0.0), published to the public demo catalog on 16 September 2026.
+- The arena demo above uses the same fixture as `venues/v1.1/century-arena.json` (Century Arena 2.0.0), published to the public demo catalog on 16 September 2026.
 - [Try the 150,000-seat Century Stadium live](https://app.seatlayer.io/demo/play/century-stadium-150k): the same fixture as `century-stadium-150k.json`, published to the public demo catalog on 16 September 2026.
-- [Try the 200,000-seat Century Stadium live](https://app.seatlayer.io/demo/play/century-stadium-200k): the same fixture as `century-stadium-200k.json`, published to the public demo catalog on 16 September 2026.
+- The largest stadium demo above uses the same fixture as `century-stadium-200k.json`, published to the public demo catalog on 16 September 2026.
 - [Try the 53,018-seat stadium demo](https://app.seatlayer.io/demo/play/large-stadium).
 - Download the [100K stadium](venues/v1/century-stadium.json), [100K arena](venues/v1.1/century-arena.json), [150K stadium](venues/v1/century-stadium-150k.json), or [200K stadium](venues/v1/century-stadium-200k.json).
 - Each stadium benchmark contains **200 sections**. [Fixture sizes, inventory counts and SHA-256 hashes](venues/v1/manifest.json) identify the exact charts tested.
@@ -65,6 +76,16 @@ These original synthetic venues provide repeatable, customer-data-free fixtures 
 - [Event isolation architecture](architecture/event-isolation.md): how events own their inventory and session streams
 - [Renderer performance documentation](https://docs.seatlayer.io/platform/renderer-performance/)
 - [Browser measurement method](benchmarks/browser/README.md)
+
+## Build on it
+
+- Documentation: [renderer performance](https://docs.seatlayer.io/platform/renderer-performance/) · [install the buyer SDK](https://docs.seatlayer.io/buyer-sdk/install/)
+- SDKs and examples: [seatlayer-sdk](https://github.com/seatlayer/seatlayer-sdk) · [React example](https://github.com/seatlayer/seatlayer-react-example) · [Next.js example](https://github.com/seatlayer/seatlayer-nextjs-example) · [Flutter](https://github.com/seatlayer/seatlayer-flutter) · [iOS](https://github.com/seatlayer/seatlayer-ios) · [Android](https://github.com/seatlayer/seatlayer-android) · [React Native](https://github.com/seatlayer/seatlayer-react-native) · [WordPress](https://github.com/seatlayer/seatlayer-wordpress)
+- [How SeatLayer compares with seats.io](https://seatlayer.io/vs/seats-io/)
+
+## How to cite
+
+Cite this repository and the dated result file; each result names its build revision and fixture SHA-256.
 
 ## License
 

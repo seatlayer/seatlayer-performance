@@ -1,4 +1,4 @@
-# Century 100K browser benchmark — 14 September 2026
+# Century 100K browser benchmark, 14 September 2026
 
 SeatLayer rendered two original synthetic large-venue fixtures: Century Stadium
 and Century Arena, each with exactly 100,000 reserved seats across 200 sections.
