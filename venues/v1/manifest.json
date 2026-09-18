@@ -1,0 +1,73 @@
+{
+  "schema": "seatlayer.synthetic-venue-manifest.v1",
+  "releasedAt": "2026-09-14",
+  "provenance": "Original synthetic SeatLayer evaluation layouts; no customer or real-venue source data.",
+  "authoredAt": "2026-09-14",
+  "chartSchemaVersion": 1,
+  "fixtures": [
+    {
+      "id": "century-stadium",
+      "name": "Century Stadium",
+      "version": "1.0.0",
+      "file": "century-stadium.json",
+      "sha256": "4ce4333febdec467bfa5b3014867f6fdd91462f2f146c4abc6f9c637f492f871",
+      "bytes": 1122482,
+      "seats": 100000,
+      "sections": 200,
+      "rows": 4800,
+      "zones": 8,
+      "objects": 5007
+    },
+    {
+      "id": "century-arena",
+      "name": "Century Arena",
+      "version": "1.0.0",
+      "file": "century-arena.json",
+      "sha256": "29fb737d8adb1ae4195495cfba1b563506052abe4f1d9eb750b366f968d97c7d",
+      "bytes": 1107539,
+      "seats": 100000,
+      "sections": 200,
+      "rows": 4800,
+      "zones": 8,
+      "objects": 5004,
+      "supersededBy": {
+        "version": "2.0.0",
+        "file": "../v1.1/century-arena.json",
+        "sha256": "c6c881670445b1bf78e6f52ed1bd8a3fd395e3e1b2aba8a93da808a29a7b7445",
+        "note": "Caption-only revision. This 1.0.0 entry stays as published: it is the chart the 14 September 2026 arena benchmark measured."
+      }
+    },
+    {
+      "id": "century-stadium-150k",
+      "name": "Century Stadium 150",
+      "version": "1.0.0",
+      "releasedAt": "2026-09-15",
+      "file": "century-stadium-150k.json",
+      "sha256": "bb5872697380e548ac6bc8474782d9acd94e2090e384dea90f6e7e1212c326c8",
+      "bytes": 1385261,
+      "seats": 150000,
+      "sections": 200,
+      "rows": 6000,
+      "zones": 8,
+      "objects": 6207
+    },
+    {
+      "id": "century-stadium-200k",
+      "name": "Century Stadium 200",
+      "version": "1.0.0",
+      "releasedAt": "2026-09-15",
+      "file": "century-stadium-200k.json",
+      "sha256": "fad6fae07dad4cd35eff2cb631883e9f56c4a0f6501be55469ba43266c7026b4",
+      "bytes": 1648881,
+      "seats": 200000,
+      "sections": 200,
+      "rows": 7200,
+      "zones": 8,
+      "objects": 7407
+    }
+  ],
+  "limitations": [
+    "Synthetic evaluation fixtures, not reconstructions of real venues.",
+    "Do not use for physical capacity, dimensions, sightlines, accessibility routes, egress, safety, or regulatory compliance."
+  ]
+}

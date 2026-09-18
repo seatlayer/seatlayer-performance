@@ -1,0 +1,93 @@
+{
+  "engineRevision": "8d4f28dc10aa92fd75c9904a92811205fafe5d34",
+  "date": "2026-09-18",
+  "host": "macOS, 11 CPUs, 18 GB, arm64; k6 v2.2.0 and the local event-engine harness on the same workstation",
+  "fixture": "synthetic 12,000-seat single event, isolated local event-engine harness",
+  "note": "Percentile fields are nearest-rank over the plateau window computed from the k6 JSON stream. HTTP percentiles include load-generator contention on the same machine; the engine values are caller-side elapsed time across the engine boundary.",
+  "runs": [
+    {
+      "id": "10k-slow",
+      "script": "drill-10k-slow.k6.js",
+      "stages": "0 to 10,000 VUs over 120 s, 120 s plateau, 20 s ramp down",
+      "ulimitN": 1048576,
+      "plateauWindowSec": [
+        125,
+        235
+      ],
+      "result": "pass",
+      "plateauSpanSecondsObserved": 110,
+      "vusPlateau": {
+        "min": 10000,
+        "max": 10000,
+        "samples": 110
+      },
+      "plateau": {
+        "httpRequests": 390795,
+        "httpRequestsPerSecond": 3552.7,
+        "httpFailed": 32,
+        "httpFailedRate": 8.2e-05,
+        "http5xx": 0,
+        "holdOk": 12977,
+        "holdRefused": 1098,
+        "engineMs": {
+          "availability": {
+            "n": 280304,
+            "p50": 0,
+            "p95": 2,
+            "p99": 4,
+            "max": 202
+          },
+          "objects": {
+            "n": 83463,
+            "p50": 1,
+            "p95": 2,
+            "p99": 4,
+            "max": 200
+          },
+          "hold": {
+            "n": 14075,
+            "p50": 1,
+            "p95": 4,
+            "p99": 9,
+            "max": 100
+          }
+        },
+        "httpMsByRoute": {
+          "availability": {
+            "n": 280304,
+            "p50": 1267.543,
+            "p95": 1960.659,
+            "p99": 2265.726,
+            "max": 2431.82
+          },
+          "objects": {
+            "n": 83463,
+            "p50": 1230.094,
+            "p95": 1912.736,
+            "p99": 2318.295,
+            "max": 2431.354
+          },
+          "release": {
+            "n": 12953,
+            "p50": 1265.473,
+            "p95": 1940.093,
+            "p99": 2193.672,
+            "max": 2429.77
+          },
+          "hold": {
+            "n": 14075,
+            "p50": 1234.068,
+            "p95": 1911.221,
+            "p99": 2312.049,
+            "max": 2429.806
+          }
+        }
+      },
+      "wholeRun": {
+        "httpRequests": 814235,
+        "httpFailed": 32,
+        "httpFailedRate": 3.9e-05
+      }
+    }
+  ]
+}

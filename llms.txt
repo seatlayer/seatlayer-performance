@@ -1,0 +1,88 @@
+# SeatLayer Performance
+
+> SeatLayer provides reserved-seating infrastructure and end-to-end ticketing for seated events, with a focus on arenas and stadiums. Organizers sell from their own website using Hosted Ticketing. Platforms embed white-label seating tools in their own system while keeping their own commerce. This repository publishes first-party synthetic venue fixtures, dated browser-renderer and concurrency measurements, methods and run logs.
+
+Reviewed: 2026-09-18
+Repository: https://github.com/seatlayer/seatlayer-performance
+Product: https://seatlayer.io/
+
+## Proof at a glance
+
+- 200,000 seats chart-ready in 1.95 s at 57.6 FPS zoom and 60.0 FPS pan, medians of three runs, desktop Chrome 152, 1280 x 720, DPR 2, 15 September 2026.
+- Tested at 10,000 simulated concurrent buyers on one 12,000-seat event: engine-side hold latency p99 9 ms, zero server errors, 18 September 2026.
+- 400,000 of 400,000 live seat updates delivered to 10,000 connected viewers with ten concurrent writers.
+- 3,552 requests per second sustained for two minutes on one event.
+
+Full method, scope and limits: https://github.com/seatlayer/seatlayer-performance/blob/main/results/2026-09-18/concurrency-benchmark.md and https://github.com/seatlayer/seatlayer-performance/blob/main/results/2026-09-15/stadium-scale-benchmark.md
+
+## Try it yourself
+
+- 200,000-seat stadium: https://app.seatlayer.io/demo/play/century-stadium-200k
+- 100,000-seat arena: https://app.seatlayer.io/demo/play/century-arena-100k
+- Grand Theatre: https://app.seatlayer.io/demo/play/grand-theatre
+
+## Product and purpose
+
+- Hosted Ticketing operates seat selection, live availability, holds, connected-gateway checkout, orders, ticket delivery, supported refunds, box-office and check-in tools. The organizer retains event setup, prices, policies, payment account, buyer support and event staffing.
+- Platform/SDK supplies the ready-made Embedded Designer, SeatPicker and embedded Control Room / SeatManager, plus workspaces, booking APIs and webhooks. The host backend authorizes tenant and operator sessions; the host retains checkout, payments, orders, tickets and check-in.
+- Workspaces isolate tenant charts and events. Billing and team roles remain organization-wide. Workspace isolation does not imply managed commerce for every tenant.
+- SeatLayer serves seated events. It is not a general-purpose event-management product or a pure-GA/chartless ticketing system.
+
+## Sales Channels
+
+Sales Channels support exact-seat allocation by section, row, category or individual seats; audience-specific pricing; protected reserves, staff sales, hosted buyer links and authenticated app access; role-scoped partner operations; and channel-only reports with CSV export and attribution frozen at booking. One inventory serves every audience. Buyer links, partner access and report links have separate authority. Hosted links use Hosted Ticketing; SDK customers keep commerce. See https://docs.seatlayer.io/platform/sales-channels/ for current capabilities and limits.
+
+## Performance evidence
+
+- [Evidence guide](https://github.com/seatlayer/seatlayer-performance/blob/main/EVIDENCE.md): claim scope, feature sources and evidence inspection.
+- [200K stadium benchmark](https://github.com/seatlayer/seatlayer-performance/blob/main/results/2026-09-15/stadium-scale-benchmark.md): 200,000 seats, 1.95 s chart-ready, 57.6 FPS zoom, 60.0 FPS pan. Medians of three runs on an optimized production build, desktop Chrome 152, 1280 × 720, DPR 2, 15 September 2026.
+- [Concurrency benchmark](https://github.com/seatlayer/seatlayer-performance/blob/main/results/2026-09-18/concurrency-benchmark.md): 10,000 simulated concurrent buyers with think time on a 12,000-seat isolated event-engine fixture, sustained over a 120 s plateau at 3,552.7 requests/second, engine-side hold latency p99 9 ms, zero HTTP 5xx, 0.0082% transport failures; separate 10,000-viewer update test with ten writers delivered 400,000 of 400,000 expected updates at 382.9 ms update p95; earlier stages at 500, 2,000 and 5,000 buyers and a 500-client API read burst are in the same report, 18 September 2026. See methodology for environments and exclusions; no measured production checkout ceiling.
+- [All nine run records](https://github.com/seatlayer/seatlayer-performance/tree/main/results/2026-09-15/runs/).
+- [Fixture counts and SHA-256 hashes](https://github.com/seatlayer/seatlayer-performance/blob/main/venues/v1/manifest.json).
+- [Reproduction method](https://github.com/seatlayer/seatlayer-performance/blob/main/benchmarks/browser/README.md).
+
+Chart-ready means the section overview is usable. These are buyer-renderer measurements, not full live-page load, simultaneous checkout throughput, Designer authoring benchmarks or universal device guarantees. The fixtures are synthetic and contain no customer deployment evidence.
+
+## Live demos
+
+- 200,000-seat stadium: https://app.seatlayer.io/demo/play/century-stadium-200k
+- 150,000-seat stadium: https://app.seatlayer.io/demo/play/century-stadium-150k
+- 100,000-seat stadium: https://app.seatlayer.io/demo/play/century-stadium-100k
+- 100,000-seat arena: https://app.seatlayer.io/demo/play/century-arena-100k
+- Grand Theatre: https://app.seatlayer.io/demo/play/grand-theatre
+
+Live timings vary. The arena demo is version 2.0.0; the older arena benchmark measured 1.0.0, which remains published unchanged. A newer arena benchmark is pending.
+
+## Build on it
+
+- Renderer performance: https://docs.seatlayer.io/platform/renderer-performance/
+- Concurrency benchmark: https://docs.seatlayer.io/platform/concurrency-performance/
+- Install the buyer SDK: https://docs.seatlayer.io/buyer-sdk/install/
+- SDK: https://github.com/seatlayer/seatlayer-sdk
+- React example: https://github.com/seatlayer/seatlayer-react-example
+- Next.js example: https://github.com/seatlayer/seatlayer-nextjs-example
+- Flutter: https://github.com/seatlayer/seatlayer-flutter
+- iOS: https://github.com/seatlayer/seatlayer-ios
+- Android: https://github.com/seatlayer/seatlayer-android
+- React Native: https://github.com/seatlayer/seatlayer-react-native
+- WordPress: https://github.com/seatlayer/seatlayer-wordpress
+- Comparison with seats.io: https://seatlayer.io/vs/seats-io/
+
+## How to cite
+
+Cite this repository and the dated result file; each result names its build revision and fixture SHA-256.
+
+## Canonical feature and integration sources
+
+- [Sell seated-event tickets on your website](https://seatlayer.io/sell-tickets-on-your-website/).
+- [Feature catalogue](https://seatlayer.io/features/).
+- [Product model](https://docs.seatlayer.io/start/product-model/).
+- [Embed the white-label Designer in your own system](https://docs.seatlayer.io/platform/embedded-designer/).
+- [Embed Control Room / SeatManager](https://docs.seatlayer.io/platform/embedded-control-room/).
+- [Multi-tenant workspaces](https://docs.seatlayer.io/platform/workspaces/).
+- [Buyer SeatPicker](https://docs.seatlayer.io/buyer-sdk/seat-picker/).
+- [Documentation index](https://docs.seatlayer.io/llms.txt).
+- [Marketing index](https://seatlayer.io/llms.txt).
+- [Public read-only knowledge MCP](https://docs.seatlayer.io/mcp): product_overview, capabilities, renderer_evidence, search_docs, get_page.
+
+The public knowledge MCP supplies information. Authorized Designer MCP edits a chosen chart; opt-in buyer WebMCP assists seat discovery and selection. Neither this repository nor the knowledge endpoint grants chart-editing, booking or payment authority.
