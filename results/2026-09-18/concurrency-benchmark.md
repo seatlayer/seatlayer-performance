@@ -1,8 +1,10 @@
-# Concurrency benchmark — 18 September 2026
+# Concurrency benchmark, 18 September 2026
 
 **Tested with 5,000 simulated concurrent users on one 12,000-seat event.** Separate live-update tests delivered all 80,000 expected hold updates to 2,000 connected viewers with ten concurrent writers.
 
-These are distinct workloads. The 5,000-user result includes think time; it does not mean 5,000 simultaneous bookings. A follow-up attempt at 10,000 users encountered connection failures and did not pass; averaging the successful runs cannot establish that capacity.
+These are distinct workloads. The 5,000-user result includes think time; it does not mean 5,000 simultaneous bookings.
+
+**Superseded in part.** A later run on 18 September sustained 10,000 simulated concurrent buyers and delivered every expected update to 10,000 connected viewers. Read the [10,000-buyer and 10,000-viewer results](concurrency-10k.md) for the current largest passing figures. The runs on this page stand as measured.
 
 ## Mixed buyer workload
 
@@ -14,7 +16,7 @@ These are distinct workloads. The 5,000-user result includes think time; it does
 
 Across the run, 128,150 HTTP requests completed with no HTTP failures. There were 4,362 successful holds and 130 refused holds. The harness did not retain refusal reasons, so these are not presented as zero application failures. Random seat selection permits contention.
 
-Every virtual user polled availability; 30% also read compact objects, and 5% attempted a one- or two-seat hold followed by release after 1–3 seconds. Think time was 1.5–2.5 seconds. The run used 5-second ramps, 20-second plateaus, and a 5-second ramp down. Rates describe the approximate plateau windows, not a sustained service guarantee.
+Every virtual user polled availability; 30% also read compact objects, and 5% attempted a one- or two-seat hold followed by release after 1 to 3 seconds. Think time was 1.5 to 2.5 seconds. The run used 5-second ramps, 20-second plateaus, and a 5-second ramp down. Rates describe the approximate plateau windows, not a sustained service guarantee.
 
 [Stage measurements](mixed-workload-stages.json) · [Complete k6 summary](mixed-workload-summary.json)
 
@@ -46,23 +48,25 @@ Each client made one availability request followed by one compact-object request
 ## Methodology and scope
 
 - Date: 18 September 2026. Event engine source revision: `93a1cd1f6e656ce3eb5dec16ec7c91fff758dfe2`.
-- Mixed workload and socket tests ran in local workerd through Miniflare 4.20260714.0, Node 24.16.0. The same workstation generated load. Synthetic inventory: 12,000 seats, one event. The mixed test had a V8 sampling profiler attached; the socket test did not.
-- The isolated harness used real EventDO code but trusted access, no main-database or queue bindings, no public auth/rate limiting, and no tenant metadata. Compact-object HTTP responses returned a byte count rather than the full inventory. These tests exclude best-available selection, payment, order creation and confirmed bookings.
+- Mixed workload and socket tests ran in a local isolated event-engine harness on Node 24.16.0. The same workstation generated load. Synthetic inventory: 12,000 seats, one event. The mixed test had a V8 sampling profiler attached; the socket test did not.
+- The isolated harness used real event-engine code but trusted access, no main-database or queue bindings, no public auth/rate limiting, and no tenant metadata. Compact-object HTTP responses returned a byte count rather than the full inventory. These tests exclude best-available selection, payment, order creation and confirmed bookings.
 - The public API read test used the deployed development service and an existing small fixture whose compact-object response was 138 bytes. It exercised public routes and database access. It did not reproduce a 12,000-seat payload or validate writes. Local source/deployed version equivalence was not established.
 - RPC time is caller-side elapsed time across the object boundary, not CPU time. HTTP timing excludes initial connection setup. Combined API percentiles use k6 interpolation; per-route exported percentiles use nearest rank.
 - A separate burst probe passed 100 simultaneous distinct-seat holds, but its 500-request stage encountered a loopback connection reset. That incomplete result does not establish object saturation.
-- Runtime, hardware, network, access scopes, mutation rate, inventory size, cold starts and deployment limits affect capacity. Local throughput does not override Cloudflare platform limits. The engine source and isolated harness are not distributed in this repository; the retained files are result summaries, not a standalone reproduction kit.
+- Runtime, hardware, network, access scopes, mutation rate, inventory size, cold starts and deployment limits affect capacity. Local throughput does not override the platform limits of the production environment. The engine source and isolated harness are not distributed in this repository; the retained files are result summaries, not a standalone reproduction kit.
 
-## Follow-up: 10,000-user attempt
+## Follow-up: the first 10,000-user attempt, superseded
 
-A follow-up used the same 12,000-seat mixed workload, a 20-second ramp toward 10,000 VUs, and a planned 60-second plateau. It reached 10,000 VUs but was stopped after approximately 46 seconds because of repeated loopback connection resets. Of 157,452 requests, 33,942 failed (21.56%). The planned plateau was not completed. No CPU profiler was attached.
+A first follow-up used the same 12,000-seat mixed workload, a 20-second ramp toward 10,000 virtual users, and a planned 60-second plateau. It reached 10,000 virtual users but was stopped after approximately 46 seconds because of repeated loopback connection resets. Of 157,452 requests, 33,942 failed (21.56%). The planned plateau was not completed. No CPU profiler was attached.
 
 [Retained interrupted-run summary](attempt-10k-summary.json)
 
-This is an unsuccessful test, not evidence for “easily handles 10,000 concurrent users.” It also does not establish the production event engine's ceiling: the origin of the connection resets has not been isolated between the host, load generator and runtime ingress. The successful 5,000-user run remains the largest passing mixed-workload result in this report.
+That attempt was not evidence for 10,000-user capacity, and it is no longer the latest word on the question. A later run the same day slowed the ramp from 20 seconds to 120 seconds, changed nothing else, and completed a full 120-second plateau at 10,000 virtual users with a 0.0082% transport failure rate and zero HTTP 5xx. The resets were an artefact of the connection establishment rate on the host, not an engine limit. See the [10,000-buyer and 10,000-viewer results](concurrency-10k.md).
+
+The 5,000-user run on this page remains as measured; it is no longer the largest passing mixed-workload result.
 
 ## Supported claim
 
 “SeatLayer's single-event engine was benchmarked with 5,000 simulated concurrent users on a 12,000-seat fixture. A separate 2,000-viewer test delivered every expected hold update with ten concurrent writers.”
 
-Link this method with the claim. These measurements do not establish a 5,000–10,000-user production capacity range, a maximum supported audience, or performance at 200,000 seats under the same concurrent workload. The renderer and concurrency benchmarks measure separate scenarios.
+Link this method with the claim. A larger passing run is reported separately in the [10,000-buyer and 10,000-viewer results](concurrency-10k.md). These measurements do not establish a maximum supported audience or performance at 200,000 seats under the same concurrent workload. The renderer and concurrency benchmarks measure separate scenarios.

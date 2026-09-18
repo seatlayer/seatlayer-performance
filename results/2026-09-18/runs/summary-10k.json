@@ -1,0 +1,220 @@
+{
+    "metrics": {
+        "http_req_tls_handshaking": {
+            "max": 0,
+            "avg": 0,
+            "p(50)": 0,
+            "p(95)": 0,
+            "p(99)": 0
+        },
+        "http_req_failed{route:objects}": {
+            "passes": 0,
+            "fails": 174555,
+            "thresholds": {
+                "rate<1": false
+            },
+            "value": 0
+        },
+        "data_sent": {
+            "count": 88563375,
+            "rate": 335890.19749173766
+        },
+        "http_req_waiting": {
+            "avg": 850.7844832437817,
+            "p(50)": 1050.163,
+            "p(95)": 1833.24,
+            "p(99)": 2090.8965599999997,
+            "max": 2431.709
+        },
+        "http_req_sending": {
+            "max": 59.062,
+            "avg": 0.008981104963560214,
+            "p(50)": 0.004,
+            "p(95)": 0.016,
+            "p(99)": 0.05
+        },
+        "rpc_ms_hold": {
+            "avg": 1.387898045647123,
+            "p(50)": 1,
+            "p(95)": 3,
+            "p(99)": 8,
+            "max": 489
+        },
+        "http_req_failed{route:hold}": {
+            "passes": 0,
+            "fails": 29268,
+            "thresholds": {
+                "rate<1": false
+            },
+            "value": 0
+        },
+        "hold_ok": {
+            "count": 27381,
+            "rate": 103.84664651184838
+        },
+        "http_req_failed{route:release}": {
+            "passes": 32,
+            "fails": 27349,
+            "thresholds": {
+                "rate<1": false
+            },
+            "value": 0.00116869361966327
+        },
+        "checks": {
+            "passes": 583030,
+            "fails": 0,
+            "value": 1
+        },
+        "hold_refused": {
+            "count": 1887,
+            "rate": 7.15673722537007
+        },
+        "http_reqs": {
+            "count": 814235,
+            "rate": 3088.1112531527283
+        },
+        "http_req_blocked": {
+            "p(50)": 0.001,
+            "p(95)": 0.008,
+            "p(99)": 0.174,
+            "max": 58.631,
+            "avg": 0.005978826751577821
+        },
+        "http_req_receiving": {
+            "p(99)": 0.533,
+            "max": 59.286,
+            "avg": 0.08829071459713242,
+            "p(50)": 0.06,
+            "p(95)": 0.231
+        },
+        "http_req_duration": {
+            "max": 2431.82,
+            "avg": 850.8817550633348,
+            "p(50)": 1050.272,
+            "p(95)": 1833.5392999999988,
+            "p(99)": 2091.0460999999996
+        },
+        "http_req_duration{route:objects}": {
+            "p(50)": 986.754,
+            "p(95)": 1787.0291999999997,
+            "p(99)": 2064.1689399999996,
+            "max": 2431.354,
+            "avg": 770.1499385351298,
+            "thresholds": {
+                "p(99)<600000": false
+            }
+        },
+        "http_req_duration{route:availability}": {
+            "avg": 877.4623056463743,
+            "p(50)": 1065.578,
+            "p(95)": 1851.0902999999998,
+            "p(99)": 2097.28165,
+            "max": 2431.82,
+            "thresholds": {
+                "p(99)<600000": false
+            }
+        },
+        "http_req_failed{route:availability}": {
+            "passes": 0,
+            "fails": 583030,
+            "thresholds": {
+                "rate<1": false
+            },
+            "value": 0
+        },
+        "http_req_connecting": {
+            "max": 4.292,
+            "avg": 0.0028939458510135146,
+            "p(50)": 0,
+            "p(95)": 0,
+            "p(99)": 0.148
+        },
+        "iteration_duration": {
+            "max": 12969.641209,
+            "avg": 3283.306878074146,
+            "p(50)": 3111.7068335,
+            "p(95)": 5461.4128812499985,
+            "p(99)": 8489.198791429999
+        },
+        "data_received": {
+            "count": 91543999,
+            "rate": 347194.671649465
+        },
+        "rpc_ms_availability": {
+            "p(50)": 0,
+            "p(95)": 2,
+            "p(99)": 4,
+            "max": 202,
+            "avg": 0.5599128689775826
+        },
+        "rpc_ms_objects": {
+            "avg": 0.7395605969465212,
+            "p(50)": 1,
+            "p(95)": 2,
+            "p(99)": 3,
+            "max": 200
+        },
+        "vus": {
+            "value": 1,
+            "min": 1,
+            "max": 10000
+        },
+        "iterations": {
+            "rate": 2211.230792001861,
+            "count": 583030
+        },
+        "http_req_duration{route:hold}": {
+            "max": 2429.806,
+            "avg": 791.0297268347587,
+            "p(50)": 1010.0635,
+            "p(95)": 1797.3863,
+            "p(99)": 2073.6121,
+            "thresholds": {
+                "p(99)<600000": false
+            }
+        },
+        "http_req_duration{expected_response:true}": {
+            "avg": 850.8309786343136,
+            "p(50)": 1050.249,
+            "p(95)": 1833.1915,
+            "p(99)": 2090.6488999999997,
+            "max": 2431.82
+        },
+        "http_req_failed": {
+            "passes": 32,
+            "fails": 814203,
+            "value": 0.000039300693288792545
+        },
+        "vus_max": {
+            "value": 10000,
+            "min": 10000,
+            "max": 10000
+        },
+        "http_req_duration{route:release}": {
+            "p(95)": 1830.875,
+            "p(99)": 2045.9416,
+            "max": 2429.77,
+            "avg": 863.5680167999805,
+            "p(50)": 1055.684,
+            "thresholds": {
+                "p(99)<600000": false
+            }
+        }
+    },
+    "setup_data": {},
+    "root_group": {
+            "name": "",
+            "path": "",
+            "id": "d41d8cd98f00b204e9800998ecf8427e",
+            "groups": {},
+            "checks": {
+                    "availability 200": {
+                        "path": "::availability 200",
+                        "id": "2533e733852d579adfcb4a6459b0f879",
+                        "passes": 583030,
+                        "fails": 0,
+                        "name": "availability 200"
+                    }
+                }
+        }
+}
