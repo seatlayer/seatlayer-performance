@@ -1,6 +1,6 @@
 # SeatLayer evidence guide
 
-Reviewed 17 September 2026. Published by SeatLayer; these are first-party benchmarks, not an independent certification.
+Reviewed 18 September 2026. Published by SeatLayer; these are first-party benchmarks, not an independent certification.
 
 ## Product scope
 
@@ -42,6 +42,10 @@ These measurements do not establish:
 - identical performance on every device;
 - complete Designer authoring performance at the fixture size; or
 - a customer deployment, customer endorsement or maximum supported seat count.
+
+## What the concurrency result establishes
+
+The [18 September concurrency benchmark](results/2026-09-18/concurrency-benchmark.md) measured 5,000 simulated users with think time on one 12,000-seat event, plus a separate 2,000-socket delivery workload with ten concurrent writers. A separate deployed API read burst completed all 1,240 reads successfully through 500 configured clients. The report specifies the different environments, short run durations, excluded integrations and retained summaries. It does not establish 10,000-user capacity or a production checkout ceiling.
 
 ## Inspect and reproduce
 
