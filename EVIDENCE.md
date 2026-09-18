@@ -45,7 +45,11 @@ These measurements do not establish:
 
 ## What the concurrency result establishes
 
-The [18 September concurrency benchmark](results/2026-09-18/concurrency-benchmark.md) measured 5,000 simulated users with think time on one 12,000-seat event, plus a separate 2,000-socket delivery workload with ten concurrent writers. A separate deployed API read burst completed all 1,240 reads successfully through 500 configured clients. The report specifies the different environments, short run durations, excluded integrations and retained summaries. It does not establish 10,000-user capacity or a production checkout ceiling.
+The [18 September 10,000-buyer benchmark](results/2026-09-18/concurrency-10k.md) sustained 10,000 simulated concurrent buyers with think time on one 12,000-seat event for a 120-second plateau, at 3,552.7 HTTP requests per second, with hold RPC p99 of 9 ms, zero HTTP 5xx and a 0.0082% transport failure rate. A separate fan-out workload delivered all 400,000 expected hold updates to 10,000 connected viewers with ten concurrent writers. HTTP percentiles in that run include load-generator contention, because the load and the engine shared one workstation, and are not a service latency guarantee.
+
+The [earlier 18 September benchmark](results/2026-09-18/concurrency-benchmark.md) measured 5,000 simulated users and a 2,000-socket delivery workload on the same fixture, plus a deployed API read burst that completed all 1,240 reads successfully through 500 configured clients. Its interrupted 10,000-user attempt is superseded by the slow-ramp run.
+
+Both reports specify their environments, run durations, excluded integrations and retained summaries. Neither establishes a production checkout ceiling. A 15,000-buyer attempt did not pass on the measured host, where the connections were reset before reaching the engine, so 15,000 is unmeasured rather than disproven.
 
 ## Inspect and reproduce
 

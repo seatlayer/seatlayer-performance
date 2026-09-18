@@ -36,11 +36,15 @@ Results are medians of three runs per chart on an optimized production build, Ch
 
 ## Concurrent users, measured
 
-**5,000 simulated concurrent users** on a 12,000-seat event, with think time and a mix of availability reads, compact-object reads, holds and releases. At the 5,000-user stage, caller-side RPC p99 was **2 ms for availability** and **4 ms for holds**.
+**10,000 simulated concurrent buyers** on a 12,000-seat event, sustained for a 120-second plateau with think time and a mix of availability reads, compact-object reads, holds and releases. Caller-side RPC p99 was **4 ms for availability** and **9 ms for holds**, with **zero HTTP 5xx** and a **0.0082%** transport failure rate.
 
-A separate **2,000-connected-viewer** test with **ten concurrent writers** delivered **80,000 of 80,000** expected hold updates, with **103 ms update p95**.
+A separate **10,000-connected-viewer** test with **ten concurrent writers** delivered **400,000 of 400,000** expected hold updates, with **383 ms update p95**.
 
-[Read the concurrency benchmark, environment and limits](results/2026-09-18/concurrency-benchmark.md). These are separate engine workloads, not a measured production checkout ceiling or a 200,000-seat concurrency result.
+An earlier run the same day measured **5,000 simulated concurrent users** on the same fixture, with availability RPC p99 of 2 ms and hold RPC p99 of 4 ms, plus a 2,000-viewer update test that delivered 80,000 of 80,000 expected updates at 103 ms update p95.
+
+A 15,000-buyer attempt did not pass on the measured host: the connections were reset by the host before reaching the engine, so 15,000 remains unmeasured rather than proven or disproven.
+
+[Read the 10,000-buyer benchmark, environment and limits](results/2026-09-18/concurrency-10k.md) · [Read the earlier 18 September runs](results/2026-09-18/concurrency-benchmark.md). These are separate engine workloads, not a measured production checkout ceiling or a 200,000-seat concurrency result.
 
 ## Explore the venues
 

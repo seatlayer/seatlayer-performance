@@ -1,0 +1,49 @@
+{
+  "engineRevision": "8d4f28dc10aa92fd75c9904a92811205fafe5d34",
+  "date": "2026-09-18",
+  "host": "macOS, 11 CPUs, 18 GB, arm64; k6 v2.2.0 and the local event-engine harness on the same workstation",
+  "fixture": "synthetic 12,000-seat single event, isolated local event-engine harness",
+  "note": "Percentile fields are nearest-rank over the plateau window computed from the k6 JSON stream. HTTP percentiles include load-generator contention on the same machine; the RPC values are caller-side elapsed time across the object boundary.",
+  "k6ErrorCodeLegend": {
+    "1000": "generic k6 request error",
+    "1200": "generic TCP error",
+    "1201": "TCP broken pipe",
+    "1220": "TCP connection reset by peer"
+  },
+  "runs": {
+    "10k-slow": {
+      "wholeRun": {
+        "1220": 32
+      },
+      "plateau": {
+        "1220": 32
+      }
+    },
+    "15k-attempt-1": {
+      "wholeRun": {
+        "1000": 30,
+        "1200": 1,
+        "1201": 8963,
+        "1220": 984021
+      },
+      "plateau": {
+        "1000": 23,
+        "1201": 4918,
+        "1220": 605351
+      }
+    },
+    "15k-attempt-2": {
+      "wholeRun": {
+        "1000": 77,
+        "1200": 1,
+        "1201": 8377,
+        "1220": 1258327
+      },
+      "plateau": {
+        "1000": 13,
+        "1201": 3018,
+        "1220": 565903
+      }
+    }
+  }
+}
