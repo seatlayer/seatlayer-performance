@@ -2,7 +2,7 @@
 
 **Tested with 5,000 simulated concurrent users on one 12,000-seat event.** Separate live-update tests delivered all 80,000 expected hold updates to 2,000 connected viewers with ten concurrent writers.
 
-These are distinct workloads. The 5,000-user result includes think time; it does not mean 5,000 simultaneous bookings. A 10,000-user result has not been measured, and averaging these results cannot establish it.
+These are distinct workloads. The 5,000-user result includes think time; it does not mean 5,000 simultaneous bookings. A follow-up attempt at 10,000 users encountered connection failures and did not pass; averaging the successful runs cannot establish that capacity.
 
 ## Mixed buyer workload
 
@@ -52,6 +52,14 @@ Each client made one availability request followed by one compact-object request
 - RPC time is caller-side elapsed time across the object boundary, not CPU time. HTTP timing excludes initial connection setup. Combined API percentiles use k6 interpolation; per-route exported percentiles use nearest rank.
 - A separate burst probe passed 100 simultaneous distinct-seat holds, but its 500-request stage encountered a loopback connection reset. That incomplete result does not establish object saturation.
 - Runtime, hardware, network, access scopes, mutation rate, inventory size, cold starts and deployment limits affect capacity. Local throughput does not override Cloudflare platform limits. The engine source and isolated harness are not distributed in this repository; the retained files are result summaries, not a standalone reproduction kit.
+
+## Follow-up: 10,000-user attempt
+
+A follow-up used the same 12,000-seat mixed workload, a 20-second ramp toward 10,000 VUs, and a planned 60-second plateau. It reached 10,000 VUs but was stopped after approximately 46 seconds because of repeated loopback connection resets. Of 157,452 requests, 33,942 failed (21.56%). The planned plateau was not completed. No CPU profiler was attached.
+
+[Retained interrupted-run summary](attempt-10k-summary.json)
+
+This is an unsuccessful test, not evidence for “easily handles 10,000 concurrent users.” It also does not establish the production event engine's ceiling: the origin of the connection resets has not been isolated between the host, load generator and runtime ingress. The successful 5,000-user run remains the largest passing mixed-workload result in this report.
 
 ## Supported claim
 
