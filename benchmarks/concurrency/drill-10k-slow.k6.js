@@ -13,9 +13,9 @@ const RAMP = __ENV.RAMP || '120s';
 const HOLD = __ENV.HOLD || '120s';
 const DOWN = __ENV.DOWN || '20s';
 
-const rpcAvail = new Trend('rpc_ms_availability', true);
-const rpcObjects = new Trend('rpc_ms_objects', true);
-const rpcHold = new Trend('rpc_ms_hold', true);
+const engineAvail = new Trend('engine_ms_availability', true);
+const engineObjects = new Trend('engine_ms_objects', true);
+const engineHold = new Trend('engine_ms_hold', true);
 const holdRefused = new Counter('hold_refused');
 const holdOk = new Counter('hold_ok');
 const errors5xx = new Counter('http_5xx');
@@ -48,8 +48,8 @@ export const options = {
   summaryTrendStats: ['avg', 'p(50)', 'p(95)', 'p(99)', 'max'],
 };
 
-function rpc(res, trend) {
-  const ms = Number(res.headers['X-Rpc-Ms'] ?? res.headers['x-rpc-ms']);
+function engineMs(res, trend) {
+  const ms = Number(res.headers['X-Engine-Ms'] ?? res.headers['x-engine-ms']);
   if (Number.isFinite(ms)) trend.add(ms);
   if (res.status >= 500) errors5xx.add(1);
 }
@@ -64,16 +64,16 @@ export default function () {
   const q = `?event=${EVENT}`;
   const a = http.get(`${BASE}/availability${q}`, { tags: { route: 'availability' } });
   check(a, { 'availability 200': (r) => r.status === 200 });
-  rpc(a, rpcAvail);
+  engineMs(a, engineAvail);
   if (Math.random() < 0.3) {
     const o = http.get(`${BASE}/objects${q}`, { tags: { route: 'objects' } });
-    rpc(o, rpcObjects);
+    engineMs(o, engineObjects);
   }
   if (Math.random() < 0.05) {
     const n = 1 + Math.floor(Math.random() * 2);
     const labels = Array.from({ length: n }, () => `S-${1 + Math.floor(Math.random() * SEATS)}`);
     const h = http.post(`${BASE}/hold-timed${q}`, JSON.stringify({ labels }), { headers: { 'content-type': 'application/json' }, tags: { route: 'hold' } });
-    rpc(h, rpcHold);
+    engineMs(h, engineHold);
     let body = null;
     try { body = JSON.parse(h.body); } catch {}
     if (body && body.ok) {

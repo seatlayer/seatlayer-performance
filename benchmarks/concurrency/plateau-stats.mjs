@@ -5,7 +5,7 @@ const [raw, ps, pe, outStages, outErr] = process.argv.slice(2);
 const PS = Number(ps), PE = Number(pe);
 let t0 = null;
 const routes = {};          // route -> {dur:[], reqs, failed}
-const rpc = {availability:[],objects:[],hold:[]};
+const engine = {availability:[],objects:[],hold:[]};
 const errCodesAll = {}, errCodesPlateau = {};
 const counters = {hold_ok:0, hold_refused:0, http_5xx:0};
 const vusPlateau = [];
@@ -34,9 +34,9 @@ for await (const line of rl) {
     if (!inP) continue;
     const r = tags.route || 'other';
     (routes[r] ||= []).push(d.value);
-  } else if (m === 'rpc_ms_availability') { if (inP) rpc.availability.push(d.value); }
-  else if (m === 'rpc_ms_objects') { if (inP) rpc.objects.push(d.value); }
-  else if (m === 'rpc_ms_hold') { if (inP) rpc.hold.push(d.value); }
+  } else if (m === 'engine_ms_availability') { if (inP) engine.availability.push(d.value); }
+  else if (m === 'engine_ms_objects') { if (inP) engine.objects.push(d.value); }
+  else if (m === 'engine_ms_hold') { if (inP) engine.hold.push(d.value); }
   else if (m === 'hold_ok') { if (inP) counters.hold_ok += d.value; }
   else if (m === 'hold_refused') { if (inP) counters.hold_refused += d.value; }
   else if (m === 'http_5xx') { if (inP) counters.http_5xx += d.value; }
@@ -57,7 +57,7 @@ const out = {
     http5xx: counters.http_5xx,
     holdOk: counters.hold_ok,
     holdRefused: counters.hold_refused,
-    rpcMs: {availability: st(rpc.availability), objects: st(rpc.objects), hold: st(rpc.hold)},
+    engineMs: {availability: st(engine.availability), objects: st(engine.objects), hold: st(engine.hold)},
     httpMsByRoute: Object.fromEntries(Object.entries(routes).map(([k,v])=>[k, st(v)])),
   },
   wholeRun: {httpRequests: totalReqs, httpFailed: totalFailed, httpFailedRate: totalReqs? Math.round((totalFailed/totalReqs)*1e6)/1e6 : 0},

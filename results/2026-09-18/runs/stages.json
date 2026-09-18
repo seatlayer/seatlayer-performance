@@ -3,7 +3,7 @@
   "date": "2026-09-18",
   "host": "macOS, 11 CPUs, 18 GB, arm64; k6 v2.2.0 and the local event-engine harness on the same workstation",
   "fixture": "synthetic 12,000-seat single event, isolated local event-engine harness",
-  "note": "Percentile fields are nearest-rank over the plateau window computed from the k6 JSON stream. HTTP percentiles include load-generator contention on the same machine; the RPC values are caller-side elapsed time across the object boundary.",
+  "note": "Percentile fields are nearest-rank over the plateau window computed from the k6 JSON stream. HTTP percentiles include load-generator contention on the same machine; the engine values are caller-side elapsed time across the engine boundary.",
   "runs": [
     {
       "id": "10k-slow",
@@ -29,7 +29,7 @@
         "http5xx": 0,
         "holdOk": 12977,
         "holdRefused": 1098,
-        "rpcMs": {
+        "engineMs": {
           "availability": {
             "n": 280304,
             "p50": 0,

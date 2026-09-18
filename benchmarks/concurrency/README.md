@@ -22,8 +22,7 @@ The fan-out script issues 40 distinct-seat holds per stage in four bursts of ten
 
 ## Measurement points
 
-- Engine-side latency is the time the event engine took to process the request, measured at the engine boundary, excluding network. The scripts read it from a response header and record it as the `rpc_ms_*` trends; the published results call these figures engine-side latency. It is elapsed time, not CPU time.
-- The scripts and the retained k6 summaries are published exactly as they ran, so their internal metric identifiers are unchanged.
+- Engine-side latency is the time the event engine took to process the request, measured at the engine boundary, excluding network. The harness returns it in the `X-Engine-Ms` response header and the scripts record it as the `engine_ms_availability`, `engine_ms_objects` and `engine_ms_hold` trends. It is elapsed time, not CPU time.
 - HTTP timing excludes initial connection setup and includes load-generator contention when the load and the engine share a host, which was the case for the published runs.
 - Plateau percentiles use nearest rank over the steady window only. The k6 run summary covers the whole run including the ramp, so its percentiles differ.
 
