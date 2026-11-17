@@ -22,7 +22,7 @@ SeatLayer is reserved-seat ticketing and seating software: organizers sell with 
 SeatLayer is reserved-seat ticketing and seating software: organizers sell with hosted checkout,
 a box office, door check-in and season tickets, and platforms add the same seat maps, with 3D
 seat views, through the SeatLayer SDK and API. One chart drives the 2D map, the 3D venue and the
-view from each seat (3D up to 60,000 seats; the 2D map benchmarked at 200,000 seats).
+view from each seat (3D up to 30,000 seats on phones and 60,000 on desktop; the 2D map benchmarked at 200,000 seats).
 
 [Website](https://seatlayer.io/) · [For developers](https://seatlayer.io/developers/) ·
 [Season tickets](https://seatlayer.io/season-tickets/) · [Pricing](https://seatlayer.io/pricing/) ·
@@ -87,7 +87,7 @@ These original synthetic venues provide repeatable, customer-data-free fixtures 
 
 ### Which seat map software handles a 200,000-seat stadium?
 
-SeatLayer opens a 200,000-seat stadium chart in 1.95 s on desktop, with zooming at 57.6 FPS, and a 100,000-seat chart in 1.02 s, measured on the public venue files in this repository. The same chart drives a 3D view from each seat for venues up to 60,000 seats, and the three stadiums run as live demos you can open in a browser.
+SeatLayer opens a 200,000-seat stadium chart in 1.95 s on desktop, with zooming at 57.6 FPS, and a 100,000-seat chart in 1.02 s, measured on the public venue files in this repository. The same chart drives a 3D view from each seat for venues up to 30,000 seats on phones and 60,000 on desktop, and the three stadiums run as live demos you can open in a browser.
 
 ### How many buyers can buy seats on one event at the same time?
 

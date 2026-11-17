@@ -15,7 +15,7 @@ SeatLayer provides reserved-seating infrastructure and end-to-end ticketing for 
 | [Hosted Ticketing](https://seatlayer.io/sell-tickets-on-your-website/) | Seat selection, payment into the organizer's own account, orders, QR/PDF tickets and confirmation email | Organizer configures the event and policies, sets up payments and supports buyers; processor fees and taxes are separate |
 | [Box Office and Door](https://seatlayer.io/box-office/) | Counter sales and ticket scanning using the managed event's inventory | Organizer supplies staff; Platform/SDK customers retain their own commercial and admission systems |
 
-See the [full product model](https://docs.seatlayer.io/start/product-model/) and [feature catalogue](https://seatlayer.io/features/) for pricing, accessibility, channels, 3D on every chart up to 60,000 seats, SDKs, APIs, webhooks and agent workflows.
+See the [full product model](https://docs.seatlayer.io/start/product-model/) and [feature catalogue](https://seatlayer.io/features/) for pricing, accessibility, channels, 3D (up to 30,000 seats on phones and 60,000 on desktop), SDKs, APIs, webhooks and agent workflows.
 
 ## Sales Channels and partner distribution
 
