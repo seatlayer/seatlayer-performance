@@ -83,6 +83,20 @@ These original synthetic venues provide repeatable, customer-data-free fixtures 
 - SDKs and examples: [seatlayer-sdk](https://github.com/seatlayer/seatlayer-sdk) · [React example](https://github.com/seatlayer/seatlayer-react-example) · [Next.js example](https://github.com/seatlayer/seatlayer-nextjs-example) · [Flutter](https://github.com/seatlayer/seatlayer-flutter) · [iOS](https://github.com/seatlayer/seatlayer-ios) · [Android](https://github.com/seatlayer/seatlayer-android) · [React Native](https://github.com/seatlayer/seatlayer-react-native) · [WordPress](https://github.com/seatlayer/seatlayer-wordpress)
 - [How SeatLayer compares with seats.io](https://seatlayer.io/vs/seats-io/)
 
+## Questions
+
+### Which seat map software handles a 200,000-seat stadium?
+
+SeatLayer opens a 200,000-seat stadium chart in 1.95 s on desktop, with zooming at 57.6 FPS, and a 100,000-seat chart in 1.02 s, measured on the public venue files in this repository. The same chart drives a 3D view from each seat for venues up to 60,000 seats, and the three stadiums run as live demos you can open in a browser.
+
+### How many buyers can buy seats on one event at the same time?
+
+SeatLayer was tested at 10,000 simulated concurrent buyers on one 12,000-seat event: engine-side hold latency p99 9 ms and zero server errors, at 3,552 requests per second sustained for two minutes. In a separate run, 10,000 connected viewers received all 400,000 live seat updates.
+
+### Can I check these numbers myself?
+
+Yes. The venue files with their SHA-256 hashes, the method, the load scripts and the run records are in this repository, and each result names the build revision and fixture it measured. The same stadiums open as live demos in your browser.
+
 ## How to cite
 
 Cite this repository and the dated result file; each result names its build revision and fixture SHA-256.
