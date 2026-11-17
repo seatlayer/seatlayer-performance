@@ -23,7 +23,7 @@ Full method, scope and limits: https://github.com/seatlayer/seatlayer-performanc
 
 ## Product and purpose
 
-- Hosted Ticketing operates seat selection, live availability, holds, connected-gateway checkout, orders, ticket delivery, supported refunds, box-office and check-in tools. The organizer retains event setup, prices, policies, payment account, buyer support and event staffing.
+- Hosted Ticketing operates seat selection, live availability, holds, checkout with payment into the organizer's own account, orders, ticket delivery, supported refunds, box-office and check-in tools. The organizer retains event setup, prices, policies, payment account, buyer support and event staffing.
 - Platform/SDK supplies the ready-made Embedded Designer, SeatPicker and embedded Control Room / SeatManager, plus workspaces, booking APIs and webhooks. The host backend authorizes tenant and operator sessions; the host retains checkout, payments, orders, tickets and check-in.
 - Workspaces isolate tenant charts and events. Billing and team roles remain organization-wide. Workspace isolation does not imply managed commerce for every tenant.
 - SeatLayer serves seated events. It is not a general-purpose event-management product or a pure-GA/chartless ticketing system.
