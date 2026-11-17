@@ -14,8 +14,7 @@ Century Arena 2.0.0
 (`c6c881670445b1bf78e6f52ed1bd8a3fd395e3e1b2aba8a93da808a29a7b7445`) was
 published on 16 September 2026 as a caption-only revision with identical seat,
 section, row and zone counts. The arena figures below belong to 1.0.0 and are
-not restated for it: the arena benchmark is **pending a re-run on fixture
-2.0.0**.
+not restated for it.
 
 Five measured runs per fixture were retained. The test used a local production
 bundle, local seeded inventory, Chrome 152, a 1280 × 800 CSS-pixel viewport at

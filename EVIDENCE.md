@@ -57,7 +57,7 @@ The same report carries the earlier stages at 500, 2,000 and 5,000 simulated buy
 4. Use the [browser measurement method](benchmarks/browser/README.md) to understand and repeat the stated workload.
 5. Treat a [live 200K demo](https://app.seatlayer.io/demo/play/century-stadium-200k) observation as a new observation with its own device, network and cache conditions, not a reproduction of the local-build result.
 
-The [100K live arena](https://app.seatlayer.io/demo/play/century-arena-100k) uses Century Arena 2.0.0. The older 14 September arena benchmark measured version 1.0.0. Both fixtures remain available; do not assign the old timing to the new fixture without a new run. See [fixture version history](venues/README.md#fixture-versions).
+The [100K live arena](https://app.seatlayer.io/demo/play/century-arena-100k) uses Century Arena 2.0.0, a caption-only revision of 1.0.0 with the same 100,000 seats, 200 sections, 4,800 rows and 8 zones. The 14 September arena benchmark measured 1.0.0, which stays published. See [fixture version history](venues/README.md#fixture-versions).
 
 ## Agent-readable sources
 
