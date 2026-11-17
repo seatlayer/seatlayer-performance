@@ -41,7 +41,7 @@ Sales Channels support exact-seat allocation by section, row, category or indivi
 - [Fixture counts and SHA-256 hashes](https://github.com/seatlayer/seatlayer-performance/blob/main/venues/v1/manifest.json).
 - [Reproduction method](https://github.com/seatlayer/seatlayer-performance/blob/main/benchmarks/browser/README.md).
 
-Chart-ready means the section overview is usable. These are buyer-renderer measurements, not full live-page load, simultaneous checkout throughput, Designer authoring benchmarks or universal device guarantees. The fixtures are synthetic and contain no customer deployment evidence.
+Chart-ready means the section overview is usable. The fixtures are synthetic and contain no customer data.
 
 ## Live demos
 

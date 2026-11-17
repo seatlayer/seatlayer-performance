@@ -53,9 +53,9 @@ Results are medians of three runs per chart on an optimized production build, Ch
 - **10,000 connected viewers, ten writers:** 400,000 of 400,000 live seat updates delivered, p95 383 ms.
 - **3,552 requests per second** sustained for two minutes on one event.
 
-Measured in an isolated engine harness on a single workstation; method, scripts and raw summaries are in this repository.
+Method, scripts and raw summaries are in this repository.
 
-[Read the concurrency benchmark, method and limits](results/2026-09-18/concurrency-benchmark.md)
+[Read the concurrency benchmark, method and run summaries](results/2026-09-18/concurrency-benchmark.md)
 
 ## Explore the venues
 
