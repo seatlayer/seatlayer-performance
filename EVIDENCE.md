@@ -56,6 +56,6 @@ The [100K live arena](https://app.seatlayer.io/demo/play/century-arena-100k) use
 - [Repository LLM index](llms.txt): concise product definition and evidence map.
 - [SeatLayer documentation index](https://docs.seatlayer.io/llms.txt) and [full documentation](https://docs.seatlayer.io/llms-full.txt).
 - [Marketing index](https://seatlayer.io/llms.txt) and [citation cards](https://seatlayer.io/citation-cards.json).
-- [Public knowledge MCP](https://docs.seatlayer.io/mcp): `product_overview`, `capabilities`, `renderer_evidence`, `search_docs` and `get_page` expose cited information. This endpoint is read-only; it does not edit charts, reserve seats or process payments. Designer MCP and buyer WebMCP are separate, scoped interfaces.
+- [Public knowledge MCP](https://docs.seatlayer.io/mcp): `product_overview`, `capabilities`, `renderer_evidence`, `search_docs` and `get_page` expose cited information. This endpoint is read-only; it does not edit charts, reserve seats or process payments. The SeatLayer MCP and buyer WebMCP are separate, scoped interfaces.
 
 Product documentation defines available features and ownership. This repository supplies the performance evidence.

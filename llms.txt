@@ -85,4 +85,4 @@ Cite this repository and the dated result file; each result names its build revi
 - [Marketing index](https://seatlayer.io/llms.txt).
 - [Public read-only knowledge MCP](https://docs.seatlayer.io/mcp): product_overview, capabilities, renderer_evidence, search_docs, get_page.
 
-The public knowledge MCP supplies information. Authorized Designer MCP edits a chosen chart; opt-in buyer WebMCP assists seat discovery and selection. Neither this repository nor the knowledge endpoint grants chart-editing, booking or payment authority.
+The public knowledge MCP supplies information. The authorized SeatLayer MCP edits a chosen chart; opt-in buyer WebMCP assists seat discovery and selection. Neither this repository nor the knowledge endpoint grants chart-editing, booking or payment authority.
