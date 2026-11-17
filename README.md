@@ -1,6 +1,6 @@
 # SeatLayer Performance: measured evidence for stadium-scale seating and ticketing
 
-SeatLayer is interactive seating chart software built for stadium scale. Platforms embed the white-label seat picker with their own checkout; organizers sell seated events on their own website with their own payment gateway. This repository publishes the first-party benchmarks behind those claims, with dated measurements, methods, fixtures and raw runs.
+SeatLayer is reserved-seat ticketing and seating software: organizers sell with hosted checkout, a box office, door check-in and season tickets, and platforms add the same seat maps, with 3D seat views, through the SeatLayer SDK and API. This repository publishes the benchmarks behind its stadium-scale numbers, with dated measurements, methods, fixtures and run records.
 
 ![SeatLayer benchmark results for 100K, 150K and 200K seats](results/2026-09-15/scale-results.svg)
 
@@ -17,16 +17,16 @@ SeatLayer is interactive seating chart software built for stadium scale. Platfor
 - [Century Arena, 100,000 seats](https://app.seatlayer.io/demo/play/century-arena-100k)
 - [Grand Theatre](https://app.seatlayer.io/demo/play/grand-theatre)
 
-## What SeatLayer does
+## What SeatLayer is
 
-SeatLayer provides **reserved-seating infrastructure and end-to-end ticketing for seated events**, with a focus on arenas and stadiums.
+SeatLayer is reserved-seat ticketing and seating software: organizers sell with hosted checkout,
+a box office, door check-in and season tickets, and platforms add the same seat maps, with 3D
+seat views, through the SeatLayer SDK and API. One chart drives the 2D map, the 3D venue and the
+view from each seat (3D up to 60,000 seats; the 2D map benchmarked at 200,000 seats).
 
-- **Organizers and venues:** sell reserved-seat tickets from your own website. Hosted Ticketing runs seat selection, live availability, temporary holds, checkout through your connected payment gateway, orders, ticket delivery, and box-office and check-in tools. SeatLayer operates the ticketing software and infrastructure; you configure your event, prices and policies, support your buyers and supply event staff.
-- **Ticketing platforms:** embed the ready-made **Venue Designer**, **buyer SeatPicker** and **Control Room / SeatManager** inside your own system under your brand, whether an application, admin portal or CMS. Workspaces isolate each tenant's charts and events; your backend authorizes the scoped sessions. Your platform keeps checkout, payments, orders and tickets.
-
-This is a seated-event product, not general-purpose event management or pure-GA ticketing without a seating chart. A SeatLayer-hosted event page is an optional distribution choice; selling from the organizer's existing website is the primary Hosted Ticketing journey.
-
-[Sell seated-event tickets on your website](https://seatlayer.io/sell-tickets-on-your-website/) · [Product features](https://seatlayer.io/features/) · [Embedded Designer](https://docs.seatlayer.io/platform/embedded-designer/) · [Embedded Control Room](https://docs.seatlayer.io/platform/embedded-control-room/) · [Workspace isolation](https://docs.seatlayer.io/platform/workspaces/)
+[Website](https://seatlayer.io/) · [For developers](https://seatlayer.io/developers/) ·
+[Season tickets](https://seatlayer.io/season-tickets/) · [Pricing](https://seatlayer.io/pricing/) ·
+[Live demo](https://seatlayer.io/demo/)
 
 ## Verify the evidence
 
