@@ -41,7 +41,7 @@ Sales Channels support exact-seat allocation by section, row, category or indivi
 - [Fixture counts and SHA-256 hashes](https://github.com/seatlayer/seatlayer-performance/blob/main/venues/v1/manifest.json).
 - [Reproduction method](https://github.com/seatlayer/seatlayer-performance/blob/main/benchmarks/browser/README.md).
 
-Chart-ready means the section overview is usable. The fixtures are synthetic and contain no customer data.
+Chart-ready means the section overview is usable. These are buyer-renderer measurements, not full live-page load, simultaneous checkout throughput, Designer authoring benchmarks or universal device guarantees. The fixtures are synthetic and contain no customer deployment evidence.
 
 ## Live demos
 
@@ -51,7 +51,7 @@ Chart-ready means the section overview is usable. The fixtures are synthetic and
 - 100,000-seat arena: https://app.seatlayer.io/demo/play/century-arena-100k
 - Grand Theatre: https://app.seatlayer.io/demo/play/grand-theatre
 
-The arena demo is version 2.0.0, a caption-only revision of 1.0.0; the 14 September arena benchmark measured 1.0.0, which remains published unchanged.
+Live timings vary. The arena demo is version 2.0.0; the older arena benchmark measured 1.0.0, which remains published unchanged. 
 
 ## Build on it
 

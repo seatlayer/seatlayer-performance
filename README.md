@@ -1,6 +1,6 @@
 # SeatLayer Performance: measured evidence for stadium-scale seating and ticketing
 
-SeatLayer is reserved-seat ticketing and seating software: organizers sell with hosted checkout, a box office, door check-in and season tickets, and platforms add the same seat maps, with 3D seat views, through the SeatLayer SDK and API. This repository publishes the benchmarks behind its stadium-scale numbers, with dated measurements, methods, fixtures and run records.
+SeatLayer is reserved-seat ticketing and seating software: organizers sell with hosted checkout, a box office, door check-in and season tickets, and platforms add the same seat maps, with 3D seat views, through the SeatLayer SDK and API. This repository publishes the first-party benchmarks behind its stadium-scale numbers, with dated measurements, methods, fixtures and run records.
 
 ![SeatLayer benchmark results for 100K, 150K and 200K seats](results/2026-09-15/scale-results.svg)
 
@@ -22,7 +22,8 @@ SeatLayer is reserved-seat ticketing and seating software: organizers sell with 
 SeatLayer is reserved-seat ticketing and seating software: organizers sell with hosted checkout,
 a box office, door check-in and season tickets, and platforms add the same seat maps, with 3D
 seat views, through the SeatLayer SDK and API. One chart drives the 2D map, the 3D venue and the
-view from each seat (3D up to 30,000 seats on phones and 60,000 on desktop; the 2D map benchmarked at 200,000 seats).
+view from each seat (the 2D map benchmarked at 200,000 seats). 3D is offered for venues up to 30,000 seats
+on phones and 60,000 on desktop by default (an SDK limit, not a measured result).
 
 [Website](https://seatlayer.io/) · [For developers](https://seatlayer.io/developers/) ·
 [Season tickets](https://seatlayer.io/season-tickets/) · [Pricing](https://seatlayer.io/pricing/) ·
@@ -53,9 +54,9 @@ Results are medians of three runs per chart on an optimized production build, Ch
 - **10,000 connected viewers, ten writers:** 400,000 of 400,000 live seat updates delivered, p95 383 ms.
 - **3,552 requests per second** sustained for two minutes on one event.
 
-Method, scripts and raw summaries are in this repository.
+Measured in an isolated engine harness on a single workstation; method, scripts and raw summaries are in this repository.
 
-[Read the concurrency benchmark, method and run summaries](results/2026-09-18/concurrency-benchmark.md)
+[Read the concurrency benchmark, method and limits](results/2026-09-18/concurrency-benchmark.md)
 
 ## Explore the venues
 
@@ -87,11 +88,11 @@ These original synthetic venues provide repeatable, customer-data-free fixtures 
 
 ### Which seat map software handles a 200,000-seat stadium?
 
-SeatLayer opens a 200,000-seat stadium chart in 1.95 s on desktop, with zooming at 57.6 FPS, and a 100,000-seat chart in 1.02 s, measured on the public venue files in this repository. The same chart drives a 3D view from each seat for venues up to 30,000 seats on phones and 60,000 on desktop, and the three stadiums run as live demos you can open in a browser.
+SeatLayer opens a 200,000-seat stadium chart in 1.95 s on desktop, with zooming at 57.6 FPS, and a 100,000-seat chart in 1.02 s, measured on the public venue files in this repository. The same stadiums open as live demos in your browser.
 
 ### How many buyers can buy seats on one event at the same time?
 
-SeatLayer was tested at 10,000 simulated concurrent buyers on one 12,000-seat event: engine-side hold latency p99 9 ms and zero server errors, at 3,552 requests per second sustained for two minutes. In a separate run, 10,000 connected viewers received all 400,000 live seat updates.
+Tested at 10,000 simulated concurrent buyers on one 12,000-seat event (18 September 2026): engine-side hold latency p99 9 ms, zero server errors. Method, fixtures and run files: [results/2026-09-18/](results/2026-09-18/). It was measured in an isolated engine harness on a single workstation, at 3,552 requests per second sustained for two minutes. In a separate run, 10,000 connected viewers received all 400,000 live seat updates.
 
 ### Can I check these numbers myself?
 
