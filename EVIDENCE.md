@@ -12,10 +12,10 @@ SeatLayer provides reserved-seating infrastructure and end-to-end ticketing for 
 | [Workspaces](https://docs.seatlayer.io/platform/workspaces/) | Isolate each tenant's charts and events | Billing, API keys and team roles remain organization-wide; this does not provide managed commerce for every tenant |
 | [SeatPicker](https://docs.seatlayer.io/buyer-sdk/seat-picker/) | Buyer seat choice, live availability and temporary holds | Platform/SDK checkout, payments, orders and tickets remain in the host product |
 | [Control Room / SeatManager](https://docs.seatlayer.io/platform/embedded-control-room/) | Ready-made live inventory and operator controls inside the host application | Same-document board, not an iframe or full account admin panel; event-scoped capabilities govern permitted actions |
-| [Hosted Ticketing](https://seatlayer.io/sell-tickets-on-your-website/) | Seat selection through connected-gateway payment, orders, QR/PDF tickets and confirmation email | Organizer configures the event and policies, connects their payment account and supports buyers; processor fees and taxes are separate |
+| [Hosted Ticketing](https://seatlayer.io/sell-tickets-on-your-website/) | Seat selection, payment into the organizer's own account, orders, QR/PDF tickets and confirmation email | Organizer configures the event and policies, sets up payments and supports buyers; processor fees and taxes are separate |
 | [Box Office and Door](https://seatlayer.io/box-office/) | Counter sales and ticket scanning using the managed event's inventory | Organizer supplies staff; Platform/SDK customers retain their own commercial and admission systems |
 
-See the [full product model](https://docs.seatlayer.io/start/product-model/) and [feature catalogue](https://seatlayer.io/features/) for pricing, accessibility, channels, optional 3D, SDKs, APIs, webhooks and agent workflows, including feature-specific availability.
+See the [full product model](https://docs.seatlayer.io/start/product-model/) and [feature catalogue](https://seatlayer.io/features/) for pricing, accessibility, channels, 3D, SDKs, APIs, webhooks and agent workflows, including feature-specific availability.
 
 ## Sales Channels and partner distribution
 
@@ -38,7 +38,7 @@ Conditions: three runs per chart, local production build, desktop Chrome 152, 12
 These measurements do not establish:
 
 - full live-site page-load timing or network retrieval of the chart;
-- simultaneous buyer counts, payment throughput or event concurrency;
+- simultaneous buyer counts, payment throughput or event concurrency (the 18 September benchmark below measures buyer concurrency separately);
 - identical performance on every device;
 - complete Designer authoring performance at the fixture size; or
 - a customer deployment, customer endorsement or maximum supported seat count.
@@ -64,6 +64,6 @@ The [100K live arena](https://app.seatlayer.io/demo/play/century-arena-100k) use
 - [Repository LLM index](llms.txt): concise product definition and evidence map.
 - [SeatLayer documentation index](https://docs.seatlayer.io/llms.txt) and [full documentation](https://docs.seatlayer.io/llms-full.txt).
 - [Marketing index](https://seatlayer.io/llms.txt) and [citation cards](https://seatlayer.io/citation-cards.json).
-- [Public knowledge MCP](https://docs.seatlayer.io/mcp): `product_overview`, `capabilities`, `renderer_evidence`, `search_docs` and `get_page` expose cited information. This endpoint is read-only; it does not edit charts, reserve seats or process payments. Designer MCP and buyer WebMCP are separate, scoped interfaces.
+- [Public knowledge MCP](https://docs.seatlayer.io/mcp): `product_overview`, `capabilities`, `renderer_evidence`, `search_docs` and `get_page` expose cited information. This endpoint is read-only; it does not edit charts, reserve seats or process payments. SeatLayer MCP and buyer WebMCP are separate, scoped interfaces.
 
 Product documentation defines available features and ownership. This repository supplies performance evidence; it is not a separate ticketing product or an unlimited-scale service guarantee.

@@ -4,7 +4,7 @@
 | --- | --- | --- |
 | [18 September 2026](2026-09-18/concurrency-benchmark.md) | 12K-seat event plus a small API fixture | 500 to 10,000 simulated concurrent buyers; 100 to 10,000 sockets with ten writers; 500-client API read burst |
 | [15 September 2026](2026-09-15/stadium-scale-benchmark.md) | 100K, 150K and 200K stadiums | Three runs per chart, readiness, seven interaction probes, [all nine raw records](2026-09-15/runs/) |
-| [14 September 2026](2026-09-14/century-100k-browser-benchmark.md) | 100K stadium and arena | Five runs per chart, readiness and interaction frames. Arena figures belong to fixture 1.0.0; a re-run on arena 2.0.0 is pending |
+| [14 September 2026](2026-09-14/century-100k-browser-benchmark.md) | 100K stadium and arena | Five runs per chart, readiness and interaction frames. Arena figures belong to fixture 1.0.0; 2.0.0 (captions only) has not been re-run |
 
 ## Reading a result
 

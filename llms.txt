@@ -23,7 +23,7 @@ Full method, scope and limits: https://github.com/seatlayer/seatlayer-performanc
 
 ## Product and purpose
 
-- Hosted Ticketing operates seat selection, live availability, holds, connected-gateway checkout, orders, ticket delivery, supported refunds, box-office and check-in tools. The organizer retains event setup, prices, policies, payment account, buyer support and event staffing.
+- Hosted Ticketing operates seat selection, live availability, holds, checkout with payment into the organizer's own account, orders, ticket delivery, supported refunds, box-office and check-in tools. The organizer retains event setup, prices, policies, payment account, buyer support and event staffing.
 - Platform/SDK supplies the ready-made Embedded Designer, SeatPicker and embedded Control Room / SeatManager, plus workspaces, booking APIs and webhooks. The host backend authorizes tenant and operator sessions; the host retains checkout, payments, orders, tickets and check-in.
 - Workspaces isolate tenant charts and events. Billing and team roles remain organization-wide. Workspace isolation does not imply managed commerce for every tenant.
 - SeatLayer serves seated events. It is not a general-purpose event-management product or a pure-GA/chartless ticketing system.
@@ -51,7 +51,7 @@ Chart-ready means the section overview is usable. These are buyer-renderer measu
 - 100,000-seat arena: https://app.seatlayer.io/demo/play/century-arena-100k
 - Grand Theatre: https://app.seatlayer.io/demo/play/grand-theatre
 
-Live timings vary. The arena demo is version 2.0.0; the older arena benchmark measured 1.0.0, which remains published unchanged. A newer arena benchmark is pending.
+Live timings vary. The arena demo is version 2.0.0; the older arena benchmark measured 1.0.0, which remains published unchanged.
 
 ## Build on it
 
@@ -85,4 +85,4 @@ Cite this repository and the dated result file; each result names its build revi
 - [Marketing index](https://seatlayer.io/llms.txt).
 - [Public read-only knowledge MCP](https://docs.seatlayer.io/mcp): product_overview, capabilities, renderer_evidence, search_docs, get_page.
 
-The public knowledge MCP supplies information. Authorized Designer MCP edits a chosen chart; opt-in buyer WebMCP assists seat discovery and selection. Neither this repository nor the knowledge endpoint grants chart-editing, booking or payment authority.
+The public knowledge MCP supplies information. The authorized SeatLayer MCP edits a chosen chart; opt-in buyer WebMCP assists seat discovery and selection. Neither this repository nor the knowledge endpoint grants chart-editing, booking or payment authority.
