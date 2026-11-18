@@ -7,7 +7,7 @@ SeatLayer is reserved-seat ticketing and seating software: organizers sell with 
 ## Proof at a glance
 
 - **200,000 seats chart-ready in 1.95 s at 57.6 FPS on desktop** (15 September 2026).
-- **Tested at 10,000 concurrent buyers on one event:** engine-side hold latency p99 9 ms, zero server errors.
+- **Tested at 10,000 simulated concurrent buyers on one event:** zero server errors; a seat hold took 9 ms at p99 inside the engine and 2.3 s at p99 for the whole request, on one machine that also ran the load tool. [Why the two differ](results/2026-09-18/concurrency-benchmark.md#engine-time-and-whole-request-time).
 - **400,000 of 400,000 live seat updates delivered** to 10,000 connected viewers.
 - **3,552 requests per second** sustained for two minutes on one event.
 
@@ -55,11 +55,11 @@ Results are medians of three runs per chart on an optimized production build, de
 
 ## Tested at 10,000 concurrent buyers
 
-- **10,000 simulated concurrent buyers** on one 12,000-seat event: engine-side hold latency p99 9 ms, zero server errors.
+- **10,000 simulated concurrent buyers** on one 12,000-seat event: zero server errors; a seat hold took 9 ms at p99 inside the engine and 2.3 s at p99 for the whole request. At 5,000 buyers the whole request took 52 ms at p99.
 - **10,000 connected viewers, ten writers:** 400,000 of 400,000 live seat updates delivered, p95 383 ms.
 - **3,552 requests per second** sustained for two minutes on one event.
 
-Measured in an isolated engine harness on a single workstation; method, scripts and raw summaries are in this repository.
+Measured in an isolated engine harness on a single workstation that also ran the load tool. The run files show the wait at 10,000 buyers was outside the engine; they do not show whether the load tool or the local server runtime caused it. The deployed service has not yet been measured at this size from separate machines; that run is the next round. Method, scripts and raw summaries are in this repository.
 
 [Read the concurrency benchmark, method and limits](results/2026-09-18/concurrency-benchmark.md)
 
@@ -97,11 +97,11 @@ SeatLayer opens a 200,000-seat stadium chart in 1.95 s on desktop, with zooming 
 
 ### How many buyers can buy seats on one event at the same time?
 
-Tested at 10,000 simulated concurrent buyers on one 12,000-seat event (18 September 2026): engine-side hold latency p99 9 ms, zero server errors. Method, fixtures and run files: [results/2026-09-18/](results/2026-09-18/). It was measured in an isolated engine harness on a single workstation, at 3,552 requests per second sustained for two minutes. In a separate run, 10,000 connected viewers received all 400,000 live seat updates.
+Tested at 10,000 simulated concurrent buyers on one 12,000-seat event (18 September 2026), with zero server errors at 3,552 requests per second sustained for two minutes. A seat hold took 9 ms at p99 inside the engine. The whole request took 2.3 s at p99 in that run, where the load tool and the engine shared one workstation; at 5,000 buyers it took 52 ms. This was a local test of the event engine, not of the deployed service. In a separate run, 10,000 connected viewers received all 400,000 live seat updates. Method, fixtures and run files: [results/2026-09-18/](results/2026-09-18/).
 
 ### Can I check these numbers myself?
 
-Yes. The venue files with their SHA-256 hashes, the method, the load scripts and the run records are in this repository, and each result names the build revision and fixture it measured. The same stadiums open as live demos in your browser.
+The chart benchmark, yes: the venue files with their SHA-256 hashes, the method and all nine run records are in this repository, each result names the build revision and fixture it measured, and the same stadiums open as live demos in your browser. The 10,000-buyer test, in part: the load scripts and the run summaries are here to read and to challenge, but the engine harness they ran against is not in this repository, so you cannot repeat that run yet.
 
 ## How to cite
 
