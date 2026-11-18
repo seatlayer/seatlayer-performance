@@ -1,6 +1,6 @@
 # Concurrency benchmark, 18 September 2026
 
-- **10,000 simulated concurrent buyers** on one 12,000-seat event: engine-side hold latency p99 9 ms, zero server errors.
+- **10,000 simulated concurrent buyers** on one 12,000-seat event: zero server errors; a seat hold took 9 ms at p99 inside the engine and 2.3 s at p99 for the whole request, on one machine that also ran the load tool. [Why the two differ](#engine-time-and-whole-request-time).
 - **10,000 connected viewers, ten writers:** 400,000 of 400,000 live seat updates delivered, p95 383 ms.
 - **3,552 requests per second** sustained for two minutes on one event.
 
@@ -19,9 +19,37 @@ Every virtual user polls availability; 30% also perform a seat inventory read; 5
 
 The 500, 2,000 and 5,000 rows are plateau stages of one staged run with 5-second ramps, 20-second plateaus and a 5-second ramp down; 128,150 HTTP requests completed with no HTTP failures, 4,362 successful holds and 130 refused holds. **The 10,000 row ran as its own test: a 120-second ramp to 10,000 virtual users, then a 120-second plateau**, with virtual users pinned at exactly 10,000 for every sample of the plateau window. Its plateau carried 390,795 requests, 12,977 accepted holds, 1,098 refused holds and 32 transport failures (0.0082%), all of them TCP connection resets on the loopback interface, on the release route, with no HTTP response and therefore no server error.
 
-Engine-side latency is the time the event engine took to process the request, measured at the engine boundary, excluding network. It stays in single-digit milliseconds at every stage. The HTTP p99 of roughly 2.3 seconds in the 10,000 row belongs to the harness: k6 and the event engine shared the same 11 CPUs, so that figure carries load-generator contention.
+Engine-side latency is the time the event engine took to process the request, measured at the engine boundary, excluding network. It stays in single-digit milliseconds at every stage. The HTTP p99 of roughly 2.3 seconds in the 10,000 row is a figure for this one-machine setup, not for the engine. The section [Engine time and whole-request time](#engine-time-and-whole-request-time) says what the run files show about it.
 
 Refused holds are not graded as system failures. Seat labels are drawn at random across 12,000 seats, so two buyers can pick the same seat, and the harness retains no refusal reason.
+
+## Engine time and whole-request time
+
+At 10,000 buyers a seat hold took 9 ms at p99 inside the engine and 2.3 s at p99 for the whole request. Both figures come from the same run. Whole-request time is what the load tool measured, from sending a request to getting the answer.
+
+Whole-request time at the 10,000-buyer plateau, from [`runs/stages.json`](runs/stages.json):
+
+| Route | Requests | p50 | p95 | p99 | Maximum |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Availability | 280,304 | 1,268 ms | 1,961 ms | 2,266 ms | 2,432 ms |
+| Seat inventory read | 83,463 | 1,230 ms | 1,913 ms | 2,318 ms | 2,431 ms |
+| Hold | 14,075 | 1,234 ms | 1,911 ms | 2,312 ms | 2,430 ms |
+| Release | 12,953 | 1,265 ms | 1,940 ms | 2,194 ms | 2,430 ms |
+
+The same measure at the 5,000-buyer stage, from [`mixed-workload-stages.json`](mixed-workload-stages.json): hold p50 1.3 ms and p99 52.2 ms; availability p50 1.0 ms and p99 69.1 ms. That was a 20-second stage of the earlier staged run, on the earlier engine revision named under Methodology.
+
+What the run files show about the gap at 10,000 buyers:
+
+- The wait was not inside the engine. At the plateau, engine time was 9 ms or less at p99 on the three routes where it is measured, and never above 202 ms.
+- The wait did not depend on the work. The median was between 1.23 and 1.27 s for an availability read, an inventory read, a hold and a release, although the engine does a different amount of work for each.
+- The wait was not in opening connections, sending or receiving. In [`runs/summary-10k.json`](runs/summary-10k.json), which covers the whole run with its ramps, each of those is under 1 ms at p99. Nearly all of the time is `http_req_waiting`, the time between a request being sent and the first byte of the answer.
+- One machine with 11 CPUs ran the load tool with its 10,000 virtual buyers, the local server runtime and the engine.
+
+What they do not show is where on that machine the requests waited. It may have been the load tool, slow to read answers while it shared the CPUs. It may have been the local server runtime that receives each request and passes it to the engine. It may have been both. We have not separated the two yet.
+
+So is 2.3 s normal for 10,000 buyers? It is not a figure for the service, in either direction. It is what this one-machine setup returned with 10,000 virtual buyers, after returning 52 ms with 5,000. A buyer on the deployed service does not wait behind a load tool on the same computer. A buyer does not see 9 ms either: a real request also crosses the network, the sign-in checks and the rate limiting, which this harness leaves out. What the 9 ms establishes is narrower: the part that decides who gets a seat was not the slow part at 10,000 buyers.
+
+The next round of this benchmark is that missing run: the same workload against a deployed service, with the load coming from separate machines, and whole-request time reported next to engine time.
 
 ## Live inventory updates
 
@@ -64,7 +92,8 @@ It does not show:
 
 - payment, order creation, confirmed bookings or best-available selection, which were not exercised;
 - a production capacity ceiling or a maximum supported audience, since local throughput does not override the platform limits of the production environment;
-- service latency at the HTTP layer, because those percentiles carry load-generator contention from the shared workstation;
+- service latency for the whole request, because the load tool and the engine shared one workstation and the run does not separate what that sharing cost;
+- the deployed service, since every buyer-workload figure here comes from one local machine and the only deployed measurement in this report is the small read burst above;
 - concurrency at 200,000 seats, since the fixture is one synthetic 12,000-seat event.
 
 ## Supported claim

@@ -2,14 +2,14 @@
 
 > SeatLayer provides reserved-seating infrastructure and end-to-end ticketing for seated events, with a focus on arenas and stadiums. Organizers sell from their own website using Hosted Ticketing. Platforms embed white-label seating tools in their own system while keeping their own commerce. This repository publishes first-party synthetic venue fixtures, dated browser-renderer and concurrency measurements, methods and run logs.
 
-Reviewed: 2026-09-18
+Reviewed: 2026-11-18
 Repository: https://github.com/seatlayer/seatlayer-performance
 Product: https://seatlayer.io/
 
 ## Proof at a glance
 
 - 200,000 seats chart-ready in 1.95 s at 57.6 FPS zoom and 60.0 FPS pan, medians of three runs, desktop Chrome 152, 1280 x 720, DPR 2, 15 September 2026.
-- Tested at 10,000 simulated concurrent buyers on one 12,000-seat event: engine-side hold latency p99 9 ms, zero server errors, 18 September 2026.
+- Tested at 10,000 simulated concurrent buyers on one 12,000-seat event, 18 September 2026: zero server errors; seat hold 9 ms at p99 inside the engine and 2.3 s at p99 for the whole request, in a local test with the load tool on the same machine; 52 ms at p99 for the whole request at 5,000 buyers. The run files show the wait was outside the engine, not what caused it; the deployed service has not yet been measured at this size.
 - 400,000 of 400,000 live seat updates delivered to 10,000 connected viewers with ten concurrent writers.
 - 3,552 requests per second sustained for two minutes on one event.
 
@@ -36,7 +36,7 @@ Sales Channels support exact-seat allocation by section, row, category or indivi
 
 - [Evidence guide](https://github.com/seatlayer/seatlayer-performance/blob/main/EVIDENCE.md): claim scope, feature sources and evidence inspection.
 - [200K stadium benchmark](https://github.com/seatlayer/seatlayer-performance/blob/main/results/2026-09-15/stadium-scale-benchmark.md): 200,000 seats, 1.95 s chart-ready, 57.6 FPS zoom, 60.0 FPS pan. Medians of three runs on an optimized production build, desktop Chrome 152, 1280 × 720, DPR 2, 15 September 2026.
-- [Concurrency benchmark](https://github.com/seatlayer/seatlayer-performance/blob/main/results/2026-09-18/concurrency-benchmark.md): 10,000 simulated concurrent buyers with think time on a 12,000-seat isolated event-engine fixture, sustained over a 120 s plateau at 3,552.7 requests/second, engine-side hold latency p99 9 ms, zero HTTP 5xx, 0.0082% transport failures; separate 10,000-viewer update test with ten writers delivered 400,000 of 400,000 expected updates at 382.9 ms update p95; earlier stages at 500, 2,000 and 5,000 buyers and a 500-client API read burst are in the same report, 18 September 2026. See methodology for environments and exclusions; no measured production checkout ceiling.
+- [Concurrency benchmark](https://github.com/seatlayer/seatlayer-performance/blob/main/results/2026-09-18/concurrency-benchmark.md): 10,000 simulated concurrent buyers with think time on a 12,000-seat isolated event-engine fixture, sustained over a 120 s plateau at 3,552.7 requests/second, engine-side hold latency p99 9 ms, whole-request hold p99 2.3 s on the shared machine (52 ms at 5,000 buyers), zero HTTP 5xx, 0.0082% transport failures; separate 10,000-viewer update test with ten writers delivered 400,000 of 400,000 expected updates at 382.9 ms update p95; earlier stages at 500, 2,000 and 5,000 buyers and a 500-client API read burst are in the same report, 18 September 2026. See methodology for environments and exclusions; no measured production checkout ceiling.
 - [All nine run records](https://github.com/seatlayer/seatlayer-performance/tree/main/results/2026-09-15/runs/).
 - [Fixture counts and SHA-256 hashes](https://github.com/seatlayer/seatlayer-performance/blob/main/venues/v1/manifest.json).
 - [Reproduction method](https://github.com/seatlayer/seatlayer-performance/blob/main/benchmarks/browser/README.md).

@@ -1,6 +1,6 @@
 # SeatLayer evidence guide
 
-Reviewed 18 September 2026. Published by SeatLayer; these are first-party benchmarks, not an independent certification.
+Reviewed 18 November 2026. Published by SeatLayer; these are first-party benchmarks, not an independent certification.
 
 ## Product scope
 
@@ -45,7 +45,7 @@ These measurements do not establish:
 
 ## What the concurrency result establishes
 
-The [18 September 10,000-buyer benchmark](results/2026-09-18/concurrency-benchmark.md) sustained 10,000 simulated concurrent buyers with think time on one 12,000-seat event for a 120-second plateau, at 3,552.7 HTTP requests per second, with engine-side hold latency p99 of 9 ms, zero HTTP 5xx and a 0.0082% transport failure rate. A separate fan-out workload delivered all 400,000 expected hold updates to 10,000 connected viewers with ten concurrent writers. HTTP percentiles in that run include load-generator contention, because the load and the engine shared one workstation, and are not a service latency guarantee.
+The [18 September 10,000-buyer benchmark](results/2026-09-18/concurrency-benchmark.md) sustained 10,000 simulated concurrent buyers with think time on one 12,000-seat event for a 120-second plateau, at 3,552.7 HTTP requests per second, with engine-side hold latency p99 of 9 ms, zero HTTP 5xx and a 0.0082% transport failure rate. A separate fan-out workload delivered all 400,000 expected hold updates to 10,000 connected viewers with ten concurrent writers. In that run the whole request took 2.3 s at p99 and 1.2 s at the median, against 9 ms at p99 inside the engine; at 5,000 buyers the whole request took 52 ms at p99. The load tool and the engine shared one workstation. The run files show the wait was outside the engine, but not whether the load tool or the local server runtime caused it. Neither figure is a service latency guarantee, and the deployed service has not yet been measured at this size. [What the run files show](results/2026-09-18/concurrency-benchmark.md#engine-time-and-whole-request-time).
 
 The same report carries the earlier stages at 500, 2,000 and 5,000 simulated buyers on the same fixture, the full 100 to 10,000 viewer delivery table, and a deployed API read burst that completed all 1,240 reads successfully through 500 configured clients. It specifies its environments, run durations, excluded integrations and retained summaries. It does not establish a production checkout ceiling.
 
