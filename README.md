@@ -22,8 +22,8 @@ SeatLayer is reserved-seat ticketing and seating software: organizers sell with 
 SeatLayer is reserved-seat ticketing and seating software: organizers sell with hosted checkout,
 a box office, door check-in and season tickets, and platforms add the same seat maps, with 3D
 seat views, through the SeatLayer SDK and API. One chart drives the 2D map, the 3D venue and the
-view from each seat (the 2D map benchmarked at 200,000 seats). 3D is offered for venues up to 30,000 seats
-on phones and 60,000 on desktop by default (an SDK limit, not a measured result).
+view from each seat (the 2D map benchmarked at 200,000 seats). 3D is offered for venues up to 60,000 seats (an SDK default, not a measured
+result).
 
 [Website](https://seatlayer.io/) · [For developers](https://seatlayer.io/developers/) ·
 [Season tickets](https://seatlayer.io/season-tickets/) · [Pricing](https://seatlayer.io/pricing/) ·
