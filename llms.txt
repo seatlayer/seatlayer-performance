@@ -51,7 +51,7 @@ Chart-ready means the section overview is usable. These are buyer-renderer measu
 - 100,000-seat arena: https://app.seatlayer.io/demo/play/century-arena-100k
 - Grand Theatre: https://app.seatlayer.io/demo/play/grand-theatre
 
-Live timings vary. The arena demo is version 2.0.0; the older arena benchmark measured 1.0.0, which remains published unchanged. 
+Live timings vary. The arena demo is version 2.0.0; the older arena benchmark measured 1.0.0, which remains published unchanged.
 
 ## Build on it
 

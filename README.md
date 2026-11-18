@@ -6,7 +6,7 @@ SeatLayer is reserved-seat ticketing and seating software: organizers sell with 
 
 ## Proof at a glance
 
-- **200,000 seats chart-ready in 1.95 s at 57.6 FPS** (15 September 2026).
+- **200,000 seats chart-ready in 1.95 s at 57.6 FPS on desktop** (15 September 2026).
 - **Tested at 10,000 concurrent buyers on one event:** engine-side hold latency p99 9 ms, zero server errors.
 - **400,000 of 400,000 live seat updates delivered** to 10,000 connected viewers.
 - **3,552 requests per second** sustained for two minutes on one event.
@@ -25,6 +25,11 @@ seat views, through the SeatLayer SDK and API. One chart drives the 2D map, the 
 view from each seat (the 2D map benchmarked at 200,000 seats). 3D is offered for venues up to 60,000 seats (an SDK default, not a measured
 result).
 
+- **Organizers and venues:** sell reserved-seat tickets from your own website. Hosted Ticketing runs seat selection, live availability, temporary holds, checkout with payment into your own account, orders, ticket delivery, and box-office and check-in tools. SeatLayer operates the ticketing software and infrastructure; you configure your event, prices and policies, support your buyers and supply event staff.
+- **Ticketing platforms:** embed the ready-made **Venue Designer**, **buyer SeatPicker** and **Control Room / SeatManager** inside your own system under your brand, whether an application, admin portal or CMS. Workspaces isolate each tenant's charts and events; your backend authorizes the scoped sessions. Your platform keeps checkout, payments, orders and tickets.
+
+This is a seated-event product, not general-purpose event management or pure-GA ticketing without a seating chart.
+
 [Website](https://seatlayer.io/) · [For developers](https://seatlayer.io/developers/) ·
 [Season tickets](https://seatlayer.io/season-tickets/) · [Pricing](https://seatlayer.io/pricing/) ·
 [Live demo](https://seatlayer.io/demo/)
@@ -40,13 +45,13 @@ This repository publishes first-party **renderer and single-event concurrency be
 
 ## Stadium scale measured
 
-| Seats | Chart ready | Zoom in/out | Pan |
+| Seats | Chart ready (desktop) | Zoom in/out | Pan |
 | ---: | ---: | ---: | ---: |
 | 100,000 | 1.02 s | 58.6 FPS | 60.0 FPS |
 | 150,000 | 1.44 s | 58.6 FPS | 60.0 FPS |
 | 200,000 | 1.95 s | 57.6 FPS | 60.0 FPS |
 
-Results are medians of three runs per chart on an optimized production build, Chrome 152, 1280 × 720, DPR 2. Chart ready means the section overview is usable; seat graphics load as buyers explore. [Read the benchmark and methodology](results/2026-09-15/stadium-scale-benchmark.md) · [Inspect all nine runs](results/2026-09-15/runs/)
+Results are medians of three runs per chart on an optimized production build, desktop Chrome 152, 1280 × 720, DPR 2. Chart ready means the section overview is usable; seat graphics load as buyers explore. [Read the benchmark and methodology](results/2026-09-15/stadium-scale-benchmark.md) · [Inspect all nine runs](results/2026-09-15/runs/)
 
 ## Tested at 10,000 concurrent buyers
 
@@ -67,7 +72,7 @@ Measured in an isolated engine harness on a single workstation; method, scripts 
 - [Try the 53,018-seat stadium demo](https://app.seatlayer.io/demo/play/large-stadium).
 - Download the [100K stadium](venues/v1/century-stadium.json), [100K arena](venues/v1.1/century-arena.json), [150K stadium](venues/v1/century-stadium-150k.json), or [200K stadium](venues/v1/century-stadium-200k.json).
 - Each stadium benchmark contains **200 sections**. [Fixture sizes, inventory counts and SHA-256 hashes](venues/v1/manifest.json) identify the exact charts tested.
-- The arena link points at Century Arena 2.0.0, a caption-only revision published on 16 September 2026. The 14 September arena benchmark measured [Century Arena 1.0.0](venues/v1/century-arena.json), which stays published unchanged. [Fixture versions](venues/README.md#fixture-versions).
+- The arena link points at Century Arena 2.0.0, a caption-only revision published on 16 September 2026. The 14 September arena benchmark measured [Century Arena 1.0.0](venues/v1/century-arena.json), which stays published unchanged; 2.0.0 has not been re-run. [Fixture versions](venues/README.md#fixture-versions).
 
 These original synthetic venues provide repeatable, customer-data-free fixtures for evaluating large seating charts.
 
@@ -88,7 +93,7 @@ These original synthetic venues provide repeatable, customer-data-free fixtures 
 
 ### Which seat map software handles a 200,000-seat stadium?
 
-SeatLayer opens a 200,000-seat stadium chart in 1.95 s on desktop, with zooming at 57.6 FPS, and a 100,000-seat chart in 1.02 s, measured on the public venue files in this repository. The same stadiums open as live demos in your browser.
+SeatLayer opens a 200,000-seat stadium chart in 1.95 s on desktop, with zooming at 57.6 FPS, and a 100,000-seat chart in 1.02 s, measured in a local production build on the public venue files in this repository. The same stadiums open as live demos in your browser.
 
 ### How many buyers can buy seats on one event at the same time?
 
